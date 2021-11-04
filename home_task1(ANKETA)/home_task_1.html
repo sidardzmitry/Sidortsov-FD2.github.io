@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task_1 ANKETA</title>
+</head>
+<body>
+
+    <script>
+        
+        let surName = prompt("Введите вашу фамилию?","");
+        while (surName === "" || surName === " ") {
+            surName = prompt("Введите вашу фамилию?","");}
+
+        let firstName = prompt("Введите ваше имя?","");
+        while (firstName === "" || firstName === " ") {
+            firstName = prompt("Введите ваше имя?","");}
+
+        let middleName = prompt("Введите ваше отчество?","");
+        while (middleName === "" || middleName === " ") {
+            middleName = prompt("Введите ваше отчество?","");}
+
+        let age = Number(prompt("Ваш возраст в годах?",""));
+        while (isNaN(age) || age == "") {
+            age = Number(prompt("Ваш возраст в годах?",""));}
+
+        let gender = confirm("Ваш пол мужской?","");
+        let ageDays = age*365;
+        let ageDaysAfter = (age+5);
+            if (gender == true){
+            gender = "Вы мужчина";
+            }else{
+            gender = "Вы женщина";
+            }
+            if (gender == true && age >= 65){
+            pension = "ДА";
+            }else{
+            pension = "НЕТ";
+            }
+            if (gender != true && age >= 60){
+            pension = "ДА";
+            }else{
+            pension = "НЕТ";
+            }
+
+        alert(`ВАШИ ФИО: ${surName} ${firstName} ${middleName}\nВАШ ВОЗРАСТ В ГОДАХ: ${age}\nВАШ ВОЗРАСТ В ДНЯХ: ${ageDays}\nЧЕРЕЗ 5 ЛЕТ ВАМ БУДЕТ: ${ageDaysAfter}\nПОЛ: ${gender}\nВЫ ПЕНСИОНЕР: ${pension}\nСПАСИБО ЗА АНКЕТУ!`);
+
+    </script>
+
+</body>
+</html>
