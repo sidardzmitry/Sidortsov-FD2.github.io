@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOOD</title>
+</head>
+<body>
+    
+    <script>
+
+        function randomDiap(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      function mood(colorsCount) {
+
+        let colors = ["","красный","оранжевый","жёлтый","зелёный","голубой","синий","фиолетовый",];
+        console.log("количество цветов: " + colorsCount);
+        let used = {};
+        for (let i = 1; i <= colorsCount; i++) {
+          let colorName = "";
+          while (true) {
+            let n = randomDiap(1, 7);
+            colorName = colors[n];
+
+            if (!(colorName in used))
+              break;
+          }
+          used[colorName] = true;
+          console.log(colorName);
+        }
+      }
+      
+      mood(3);
+
+    </script>
+</body>
+</html>
