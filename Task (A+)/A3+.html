@@ -1,16 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>A3+</title>
-</head>
-<body>
-    
+  </head>
+  <body>
     <script>
-
+      let result = +prompt("ввести слово", "");
+      function palindrome(result) {
+        for (l = 0, r = result.lenght - 1; l < result.lenght; l++, r--) {
+          let leftBox = result[l];
+          let rightBox = result[r];
+          if (leftBox !== rightBox) {
+            return false;
+          } 
+          }
+          return true;
+        }
+//         /**
+//  * Check if a word is palindrome
+//  * @param {string} word - The word to check
+//  */
+// module.exports.isPalindrome = function (word) {
+//     const wordWithoutSpace = word.replace(' ', '').toLocaleLowerCase();
+//     for (let leftPos = 0, rightPos = wordWithoutSpace.length - 1; leftPos < wordWithoutSpace.length; leftPos++, rightPos--) {
+//         const leftChar = wordWithoutSpace[leftPos];
+//         const rightChar = wordWithoutSpace[rightPos];
+//         if (leftChar !== rightChar) {
+//             return false;
+//         }
+//     }
+//     return true;
+// };
     </script>
-    
-</body>
+  </body>
 </html>
