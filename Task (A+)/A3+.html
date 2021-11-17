@@ -8,7 +8,8 @@
   </head>
   <body>
     <script>
-      let result = +prompt("Ввести слово");
+      
+      let result = +prompt("ВВедите слово");
       function palindrome(result) {
         for (l = 0, r = result.lenght - 1; l < result.lenght; l++, r--) {
           let leftBox = result[l];
@@ -19,6 +20,8 @@
           }
           return true;
         }
+        alert(palindrome(result));
+        
     </script>
   </body>
 </html>
