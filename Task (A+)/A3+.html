@@ -8,9 +8,9 @@
   </head>
   <body>
     <script>
-      let word = prompt("Ввести слово","");
+      let word = prompt("Ввести слово палиндром","");
       function taskPalindrome(word) {
-        let upText = word.replace(/[ ]/gi, "").toLowerCase();
+        let upText = word.replace(/[ ]/gi, "").replace(/[ё]/gi, "е").replace(/[ъ]/gi, "ь").replace(/[,]/gi, "").replace(/[.]/gi, "").replace(/[!]/gi, "").replace(/[?]/gi, "").replace(/[-]/gi, "").toLowerCase();
         for (let l = 0, r = upText.length - 1; l < upText.length; l++, r--) {
           let leftBox = upText[l];
           let rightBox = upText[r];
