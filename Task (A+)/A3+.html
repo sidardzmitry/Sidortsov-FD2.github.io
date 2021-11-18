@@ -8,20 +8,19 @@
   </head>
   <body>
     <script>
-      
-      let result = +prompt("ВВедите слово");
-      function palindrome(result) {
-        for (l = 0, r = result.lenght - 1; l < result.lenght; l++, r--) {
-          let leftBox = result[l];
-          let rightBox = result[r];
+      let word = prompt("Ввести слово","");
+      function taskPalindrome(word) {
+        let upText = word.replace(/[ ]/gi, "").toLowerCase();
+        for (let l = 0, r = upText.length - 1; l < upText.length; l++, r--) {
+          let leftBox = upText[l];
+          let rightBox = upText[r];
           if (leftBox !== rightBox) {
             return false;
-          } 
           }
-          return true;
         }
-        alert(palindrome(result));
-        
+        return true;
+      };
+      console.log(taskPalindrome(word));
     </script>
   </body>
 </html>
