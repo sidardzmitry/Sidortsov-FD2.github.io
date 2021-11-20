@@ -8,45 +8,18 @@
   </head>
   <body>
     <script>
-      let word = "         Hello world         ";
-      let allClearStr = function clearStr(word) {
-        for ( let i = 0, e = word.length - 1; i < word.length; i++, e--) {
-          if(word.charCodeAt(i, e) !== 32) {
-            firstIndex = i;
-            lastIndex = e;
+      let wordStr = prompt("Ввести строку с пробелами внчале и конце","");
+      function clearStr(wordStr) {
+        for (i = 0, e = wordStr.length - 1; i < wordStr.length; i++, e--) {
+          if (wordStr.charCodeAt(i, e) != 32) {
+            let firstIndex = i;
+            let lastIndex = e;
             break;
-          }else{
-            let newStr = word.slice(firstIndex, lastIndex);
           }
-          return newStr;
+          return wordStr.slice(firstIndex, lastIndex - 1);
         }
       }
-
-
-
-      // let str = " Ввести слова с пробелами ";
-      // let aStr = "";
-      // function clearStr(str) {
-      //   for (i = 0; i < str.length; str --){
-      //      aStr = (str.slice(0,-1) + str.replace(" ", "$"));
-      //   }
-      //   //str.replace(" ", "$");
-      //   return aStr;
-      // }
-      // console.log(aStr);
-
-      // let word = " hello "
-      // let word2 = word.slice(0, -1);
-      // console.log(`${word2}$`);
-
-      // let str = " Ввести слова с пробелами ";
-      // function clearWord(str) {
-      //   return str.replace(" ", "$");
-      // }
-
-      // let x = " Hello world "
-      // x = x.substring(0, 0) + 'h' + x.substring(0+0);
-
+      console.log("#"+wordStr+"#");
     </script>
   </body>
 </html>
