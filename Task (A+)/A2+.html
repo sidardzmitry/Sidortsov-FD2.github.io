@@ -8,6 +8,22 @@
   </head>
   <body>
     <script>
+      let word = "         Hello world         ";
+      let allClearStr = function clearStr(word) {
+        for ( let i = 0, e = word.length - 1; i < word.length; i++, e--) {
+          if(word.charCodeAt(i, e) !== 32) {
+            firstIndex = i;
+            lastIndex = e;
+            break;
+          }else{
+            let newStr = word.slice(firstIndex, lastIndex);
+          }
+          return newStr;
+        }
+      }
+
+
+
       // let str = " Ввести слова с пробелами ";
       // let aStr = "";
       // function clearStr(str) {
