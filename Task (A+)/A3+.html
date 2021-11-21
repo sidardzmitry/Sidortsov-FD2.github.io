@@ -23,19 +23,20 @@
       // console.log(taskPalindrome(word));
 
       let wordStr = "!,шалаш?.";
-      let ignore = ",.!?";
+      let ignore = (",,.,!,?,е,ё,ь,ъ, ,");
       function getPalindrome(wordStr) {
         for (let l = 0, r = wordStr.length - 1; l < wordStr.length; l++, r--) {
           let leftBox = wordStr[l];
           let rightBox = wordStr[r];
           if (ignore.indexOf(wordStr) !== -1) {
             continue;
-          }else{(leftBox !== rightBox)
-              return false;
-            }
+          }
+          if (leftBox !== rightBox) {
+            return false;
           }
           return true;
-        };
+        }
+      };
       console.log(getPalindrome(wordStr));
     </script>
   </body>
