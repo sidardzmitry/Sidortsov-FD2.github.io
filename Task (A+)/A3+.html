@@ -8,34 +8,21 @@
   </head>
   <body>
     <script>
-      // let word = prompt("Ввести слово палиндром","");
-      // function taskPalindrome(word) {
-      //   let upText = word.replace(/[ ]/gi, "").replace(/[ё]/gi, "е").replace(/[ъ]/gi, "ь").replace(/[,]/gi, "").replace(/[.]/gi, "").replace(/[!]/gi, "").replace(/[?]/gi, "").replace(/[-]/gi, "").toLowerCase();
-      //   for (let l = 0, r = upText.length - 1; l < upText.length; l++, r--) {
-      //     let leftBox = upText[l];
-      //     let rightBox = upText[r];
-      //     if (leftBox !== rightBox) {
-      //       return false;
-      //     }
-      //   }
-      //   return true;
-      // };
-      // console.log(taskPalindrome(word));
-
-      let wordStr = "!,шалаш?.";
-      let ignore = (",,.,!,?,е,ё,ь,ъ, ,");
+      let wordStr = "ё!,молоко!?.е";
+      let ignore = ",.!?еёьъ";
+      let leftBox = "";
+      let rightBox = "";
       function getPalindrome(wordStr) {
-        for (let l = 0, r = wordStr.length - 1; l < wordStr.length; l++, r--) {
-          let leftBox = wordStr[l];
-          let rightBox = wordStr[r];
-          if (ignore.indexOf(wordStr) !== -1) {
+        for (l = 0, r = wordStr.length - 1; l < wordStr.length; l++, r--) {
+          leftBox = wordStr[l];
+          rightBox = wordStr[r];
+          if (ignore.indexOf(leftBox) !== 0 || ignore.indexOf(rightBox) !== -1) {
             continue;
-          }
-          if (leftBox !== rightBox) {
+          } else if (leftBox !== rightBox) {
             return false;
           }
-          return true;
         }
+        return true;
       };
       console.log(getPalindrome(wordStr));
     </script>
