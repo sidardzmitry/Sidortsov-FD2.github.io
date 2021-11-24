@@ -8,22 +8,22 @@
   </head>
   <body>
     <script>
-      let wordStr = "       hello  ";
+      let wordStr = "       hello                         ";
       function clearStr(wordStr) {
         let firstIndex = "";
         let lastIndex = wordStr.length;
-        for (i = 0; i < wordStr.length; i++) {
-          if (wordStr.charCodeAt(i) != 32) {
+        for (let i = 0; i < wordStr.length; i++) {
+          if (wordStr.charCodeAt(i) != " ".charCodeAt(0)) {
             firstIndex = i;
             break;
           }
         }
-          for (e = wordStr.length; e = 0; e--) {
-            wordStr.charCodeAt(e) != 32
+          for ( let e = wordStr.length; e = 0; e--) {
+            wordStr.charCodeAt(e) != " ".charCodeAt(0)
               lastIndex = e;
               break;
             }
-        return wordStr.slice(firstIndex, lastIndex -1);
+        return wordStr.slice(firstIndex);
       }
       console.log("#"+clearStr(wordStr)+"#");
     </script>

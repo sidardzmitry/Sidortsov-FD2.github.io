@@ -8,20 +8,22 @@
   </head>
   <body>
     <script>
-      let wordStr = "!?шалаш.,";
+      let wordStr = "!шалаш?";
       let ignore = "!.,?";
       let newWordStr = "";
       function getClearPalindrome(wordStr) {
-        for ( let i = 0; i = wordStr.length -1; i++) {
+        for ( let i = 0; i = wordStr.length - 1; i++) {
           let wordChar = wordStr[i];
           if (ignore.indexOf(wordChar)) {
             continue;
           } else {
             newWordStr += wordChar;
-            break;
           }
         }
-        for ( let a = 0, e = newWordStr.length - 1; a < newWordStr.length; i++, a--) {
+      };
+
+        function checkPalindrome(newWordStr) {
+        for ( let a = 0, e = newWordStr.length - 1; a < newWordStr.length; a++, e--) {
           if (newWordStr[a] !== newWordStr[e]) {
             return false;
             break;
@@ -29,8 +31,8 @@
             return true;
           }
         }
-      }
-      console.log(newWordStr);
+      };
+      console.log (checkPalindrome(newWordStr));
     </script>
   </body>
 </html>
