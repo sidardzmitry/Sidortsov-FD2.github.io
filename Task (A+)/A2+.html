@@ -8,24 +8,32 @@
   </head>
   <body>
     <script>
-      let wordStr = "       hello                         ";
+
+      let wordStr = prompt("Ввести строку с пробелами вначале и конце","");
+      
       function clearStr(wordStr) {
         let firstIndex = "";
-        let lastIndex = wordStr.length;
+        let lastIndex = "";
         for (let i = 0; i < wordStr.length; i++) {
-          if (wordStr.charCodeAt(i) != " ".charCodeAt(0)) {
-            firstIndex = i;
+          if (wordStr.charAt(i) !== " ".charAt(0)) {
+            firstIndex = wordStr.slice(i);
             break;
           }
         }
-          for ( let e = wordStr.length; e = 0; e--) {
-            wordStr.charCodeAt(e) != " ".charCodeAt(0)
-              lastIndex = e;
-              break;
-            }
-        return wordStr.slice(firstIndex);
+        lastIndex = firstIndex;
+
+        for (let i = firstIndex.length - 1; i >= 0; i--) {
+          if (firstIndex.charAt(i) !== " ".charAt(0)) {
+            lastIndex = firstIndex.slice(0, i + 1);
+            break;
+          }
+        }
+        return lastIndex;
       }
-      console.log("#"+clearStr(wordStr)+"#");
+      
+      let result = clearStr(wordStr);
+      console.log("---" + (result) + "---");
+
     </script>
   </body>
 </html>

@@ -8,31 +8,34 @@
   </head>
   <body>
     <script>
-      let wordStr = "!шалаш?";
-      let ignore = "!.,?";
-      let newWordStr = "";
-      function getClearPalindrome(wordStr) {
-        for ( let i = 0; i = wordStr.length - 1; i++) {
-          let wordChar = wordStr[i];
-          if (ignore.indexOf(wordChar)) {
-            continue;
-          } else {
-            newWordStr += wordChar;
-          }
-        }
-      };
 
-        function checkPalindrome(newWordStr) {
-        for ( let a = 0, e = newWordStr.length - 1; a < newWordStr.length; a++, e--) {
-          if (newWordStr[a] !== newWordStr[e]) {
+      let wordStr = "Пустите! - Летит супу миска Максиму. - Пустите, летит суп!";
+
+      function checkPalindrome(wordStr) {
+        let ignoreChar =
+          /['!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~\s]/g;
+        let ignoreCharText = wordStr
+          .replace(ignoreChar, "")
+          .replace(/[ё]/g, "е")
+          .replace(/[ъ]/g, "ь")
+          .toLowerCase();
+        for (
+          let i = 0, e = ignoreCharText.length - 1;
+          i < ignoreCharText.length;
+          i++, e--
+        ) {
+          if (ignoreCharText[i] !== ignoreCharText[e]) {
             return false;
             break;
           } else {
             return true;
           }
         }
-      };
-      console.log (checkPalindrome(newWordStr));
+      }
+
+      let result = checkPalindrome(wordStr);
+      console.log(result);
+
     </script>
   </body>
 </html>
