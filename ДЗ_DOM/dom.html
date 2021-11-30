@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM(работа на занятии)</title>
+    <style>
+      .div-block {
+        display: flex;
+        flex-direction: column;
+      }
+
+      input {
+        width: 200px;
+        height: 20px;
+      }
+
+      button {
+        width: 200px;
+        background-color: aqua;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="newdiv"></div>
+    <div class="form-block">
+      <input type="text" placeholder="text"/>
+      <input type="text" placeholder="proper"/>
+      <input type="text" placeholder="value"/>
+      <button onclick="createH1">Send</button>
+    </div>
+
+    <script>
+      let formBlock = document.querySelector(".form-block");
+      let newDiv = document.querySelector(".newdiv");
+      let valueFormBlock = {};
+      let inp = document.getElementsByTagName("input");
+      console.log(inp);
+      function createH1() {}
+
+
+      //   let div = document.createElement("div");
+      //   div.classList.add("wrapper");
+      //   let body = document.querySelector("body");
+      //   body.appendChild(div);
+
+      //   const header = document.createElement('h1');
+      //   header.textContent = 'Hello, I am Dima';
+      //   div.insertAdjacentElement('beforebegin', header);
+
+      //   let ul = `
+      //     <ul>
+      //         <li>one</li>
+      //         <li>two</li>
+      //         <li>three</li>
+      //     </ul>
+      //   `;
+      //     div.innerHTML = ul;
+    </script>
+  </body>
+</html>
