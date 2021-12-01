@@ -16,20 +16,21 @@ let inp1 = document.createElement("input");
 inp1.setAttribute("name", "text");
 inp1.setAttribute("placeholder", "text");
 divBox.appendChild(inp1);
+//let inp1El = document.querySelector("input[name=text]");
 
 //input 1
 let inp2 = document.createElement("input");
-inp2.setAttribute("name", "proper");
-inp2.setAttribute("placeholder", "proper");
+inp2.setAttribute("name", "property");
+inp2.setAttribute("placeholder", "property");
 divBox.appendChild(inp2);
-let inp2El = document.querySelector("input[name=proper]");
+//let inp2El = document.querySelector("input[name=property]");
 
 //input 2
 let inp3 = document.createElement("input");
 inp3.setAttribute("name", "value");
 inp3.setAttribute("placeholder", "value");
 divBox.appendChild(inp3);
-let inp3El = document.querySelector("input[name=value]");
+//let inp3El = document.querySelector("input[name=value]");
 
 //input 3
 let btn = document.createElement("button");
@@ -40,17 +41,18 @@ divBox.appendChild(btn);
 
 //функция которая должна принимать свойства и значения из input и добавлять их по кнопке на страницу DOM!
 function createH1() {
-  let newObj = {};  
-  for( let inp of divBox.children) {
-      divBox[inp.name] = inp.value;
+  let divBoxEl = document.querySelector(".divbox");
+  let newObjEl = {};
+  for (let inp of divBoxEl.children) {
+    newObjEl[inp.name] = inp.value;
   }
-  console.log("newObj.proper", newObj.proper);
-  console.log("newObj.value", newObj.value);
-  console.log("newH1El", newH1El);
+  console.log(newObjEl.property);
+  console.log(newObjEl.property);
+  console.log(newH1El);
 
   let body = document.querySelector("body");
   body.appendChild(newH1El);
 
-  newH1El.style[newObj.proper] = newObj.value;
-  newH1El.innerText = newObj.text;
+  newH1El.style[newObjEl.property] = newObjEl.value;
+  newH1El.innerText = newObjEl.text;
 }
