@@ -15,24 +15,32 @@ inp1.setAttribute("name", "text");
 inp1.setAttribute("placeholder", "text");
 divBox.appendChild(inp1);
 
+//input 1
 let inp2 = document.createElement("input");
 inp2.setAttribute("name", "proper");
 inp2.setAttribute("placeholder", "proper");
 divBox.appendChild(inp2);
 
+//input 2
 let inp3 = document.createElement("input");
 inp3.setAttribute("name", "value");
 inp3.setAttribute("placeholder", "value");
 divBox.appendChild(inp3);
 
+//input 3
 let btn = document.createElement("button");
 btn.classList.add("btn");
-btn.setAttribute("onclick", "create()");
+btn.setAttribute("onclick", "createH1()");
 btn.textContent = "Save";
 divBox.appendChild(btn);
 
 //функция которая должна принимать свойства и значения из input и добавлять их по кнопке на страницу DOM!
-function create() {
-    newH1.innerText = "hello";
-    newH1.style.color = "red";
+let newObj = {};
+function createH1() {
+  for ( let inp of divBox.children) {
+      divBox[inp.name] = inp.value;
+  }
+  console.log("newObj.proper");
+  console.log("newObj.value");
+  console.log("newH1");
 }
