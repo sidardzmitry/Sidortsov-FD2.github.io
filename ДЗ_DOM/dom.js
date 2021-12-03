@@ -28,9 +28,9 @@ function createButton(className, nameFunction) {
 }
 
 //вызываем функцию...
-divBox.appendChild(createButton("btn", "createH1()")).textContent="SaveH1";
-divBox.appendChild(createButton("btn", "createP()")).textContent="SaveP";
-divBox.appendChild(createButton("btn", "")).textContent="SaveUl";
+divBox.appendChild(createButton("btn", "createH1()")).textContent = "SaveH1";
+divBox.appendChild(createButton("btn", "createP()")).textContent = "SaveP";
+divBox.appendChild(createButton("btn", "createUl()")).textContent = "SaveUl";
 
 //функция которая должна принимать свойства и значения из input и добавлять <h1></h1> в DOM...
 function createH1() {
@@ -41,9 +41,9 @@ function createH1() {
   for (let inp of divBoxEl.children) {
     newObjEl[inp.name] = inp.value;
   }
-  body.appendChild(newH1);
   newH1.style[newObjEl.property] = newObjEl.value;
   newH1.innerText = newObjEl.text;
+  body.appendChild(newH1);
 }
 
 //функция которая должна принимать свойства и значения из input и добавлять <p></p> в DOM...
@@ -55,11 +55,26 @@ function createP() {
   for (let inp1 of divBoxElp.children) {
     newObjElp[inp1.name] = inp1.value;
   }
-  body.appendChild(newP);
   newP.style[newObjElp.property] = newObjElp.value;
   newP.innerText = newObjElp.text;
+  body.appendChild(newP);
 }
 
 function createUl() {
-  
+  let divBoxElList = document.querySelector(".divbox");
+  const newUl = document.createElement("ul");
+  newUl.classList.add("list");
+  const newLi = document.createElement("li");
+  const newObjElList = {};
+  for (let inpList of divBoxElList.children) {
+    newObjElList[inpList.name] = inpList.value;
+  }
+  newLi.style[newObjElList.property] = newObjElList.value;
+  newLi.innerText = newObjElList.text;
+  newUl.appendChild(newLi);
+  if(!body.newUl) {
+    body.appendChild(newUl);
+  }else{
+    break;
+  }
 }
