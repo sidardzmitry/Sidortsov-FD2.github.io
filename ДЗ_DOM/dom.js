@@ -4,12 +4,15 @@ const body = document.querySelector("body");
 //Создаем и добавляем элемент div с классом  и вставляем в body...
 const divBox = document.createElement("div");
 divBox.classList.add("divbox");
+divBox.style.marginTop = "30px";
 body.appendChild(divBox);
 
 //создаем функцию, которая добавляет 3 инпута...
 function createInput(name, placeholder) {
   const inps = document.createElement("input");
   inps.setAttribute("name", name);
+  inps.style.width = "350px";
+  inps.style.height = "25px";
   inps.setAttribute("placeholder", placeholder);
   return inps;
 }
@@ -32,13 +35,12 @@ divBox.appendChild(createButton("btn", "createH1()")).textContent = "SaveH1";
 divBox.appendChild(createButton("btn", "createP()")).textContent = "SaveP";
 divBox.appendChild(createButton("btn", "createUl()")).textContent = "SaveUl";
 
-//функция которая должна принимать свойства и значения из input и добавлять <h1></h1> в DOM...
+//функция которая должна принимать свойства и значения из input и добавлять <h1></h1>...
 function createH1() {
-  let divBoxEl = document.querySelector(".divbox");
   const newH1 = document.createElement("h1");
   newH1.classList.add("newh1");
   const newObjEl = {};
-  for (let inp of divBoxEl.children) {
+  for (let inp of divBox.children) {
     newObjEl[inp.name] = inp.value;
   }
   newH1.style[newObjEl.property] = newObjEl.value;
@@ -46,13 +48,12 @@ function createH1() {
   body.appendChild(newH1);
 }
 
-//функция которая должна принимать свойства и значения из input и добавлять <p></p> в DOM...
+//функция которая должна принимать свойства и значения из input и добавлять <p></p>...
 function createP() {
-  let divBoxElp = document.querySelector(".divbox");
   const newP = document.createElement("p");
   newP.classList.add("newP");
   const newObjElp = {};
-  for (let inp1 of divBoxElp.children) {
+  for (let inp1 of divBox.children) {
     newObjElp[inp1.name] = inp1.value;
   }
   newP.style[newObjElp.property] = newObjElp.value;
@@ -60,21 +61,17 @@ function createP() {
   body.appendChild(newP);
 }
 
+//функция которая должна принимать свойства и значения из input и добавлять <ul><li></li></ul>...
+const newUl = document.createElement("ul");
 function createUl() {
-  let divBoxElList = document.querySelector(".divbox");
-  const newUl = document.createElement("ul");
   newUl.classList.add("list");
   const newLi = document.createElement("li");
   const newObjElList = {};
-  for (let inpList of divBoxElList.children) {
+  for (let inpList of divBox.children) {
     newObjElList[inpList.name] = inpList.value;
   }
   newLi.style[newObjElList.property] = newObjElList.value;
   newLi.innerText = newObjElList.text;
-  newUl.appendChild(newLi);
-  if(!body.newUl) {
-    body.appendChild(newUl);
-  }else{
-    break;
-  }
+  body.appendChild(newUl);
+  newUl.append(newLi);
 }
