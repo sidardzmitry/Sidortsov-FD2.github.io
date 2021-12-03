@@ -19,23 +19,22 @@ divBox.appendChild(createInput("text", "text"));
 divBox.appendChild(createInput("property", "property"));
 divBox.appendChild(createInput("value", "value"));
 
-//создаем кнопку и передаем функцию в нее...
-const btnH1 = document.createElement("button");
-btnH1.classList.add("btn");
-btnH1.setAttribute("onclick", "createH1()");
-btnH1.textContent = "SaveH1";
-divBox.appendChild(btnH1);
+//создаем функцию, которая добавляет кнопки...
+function createButton(className, nameFunction) {
+  const btns = document.createElement("button");
+  btns.setAttribute("class", className);
+  btns.setAttribute("onclick", nameFunction);
+  return btns;
+}
 
-//Создаем кнопку и передаем в нее функцию...
-const btnP = document.createElement("button");
-btnP.classList.add("btnP");
-btnP.setAttribute("onclick", "createP()");
-btnP.textContent = "SaveP";
-divBox.appendChild(btnP);
+//вызываем функцию...
+divBox.appendChild(createButton("btn", "createH1()")).textContent="SaveH1";
+divBox.appendChild(createButton("btn", "createP()")).textContent="SaveP";
+divBox.appendChild(createButton("btn", "")).textContent="SaveUl";
 
 //функция которая должна принимать свойства и значения из input и добавлять <h1></h1> в DOM...
 function createH1() {
-  const divBoxEl = document.querySelector(".divbox");
+  let divBoxEl = document.querySelector(".divbox");
   const newH1 = document.createElement("h1");
   newH1.classList.add("newh1");
   const newObjEl = {};
@@ -49,7 +48,7 @@ function createH1() {
 
 //функция которая должна принимать свойства и значения из input и добавлять <p></p> в DOM...
 function createP() {
-  const divBoxElp = document.querySelector(".divbox");
+  let divBoxElp = document.querySelector(".divbox");
   const newP = document.createElement("p");
   newP.classList.add("newP");
   const newObjElp = {};
@@ -61,4 +60,6 @@ function createP() {
   newP.innerText = newObjElp.text;
 }
 
-
+function createUl() {
+  
+}
