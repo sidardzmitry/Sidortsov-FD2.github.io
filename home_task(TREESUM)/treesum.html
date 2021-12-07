@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TREESUM</title>
+</head>
+<body>
+    <script>
+        
+        function treeSum(numbers) {
+        let result = 0;
+        for (let i = 0; i < numbers.length; i++) {
+            let value = numbers[i];
+            if (Array.isArray(value)) {
+                result += treeSum(value)
+            }else{
+                result += value;
+            }
+        }
+        return result;
+        }
+        let arr = treeSum([ 5, 7, [ 4, [2], 8, [1,3], 2 ], [ 9, [] ], 1, 8]);
+        
+        console.log(arr);
+        
+    </script>
+</body>
+</html>
