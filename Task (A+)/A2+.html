@@ -8,9 +8,8 @@
   </head>
   <body>
     <script>
+      let wordStr = prompt("Ввести строку с пробелами вначале и конце", "");
 
-      let wordStr = prompt("Ввести строку с пробелами вначале и конце","");
-      
       function clearStr(wordStr) {
         let firstIndex = "";
         let lastIndex = "";
@@ -30,10 +29,9 @@
         }
         return lastIndex;
       }
-      
-      let result = clearStr(wordStr);
-      console.log("---" + (result) + "---");
 
+      let result = clearStr(wordStr);
+      console.log("---" + result + "---");
     </script>
   </body>
 </html>

@@ -4,28 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>A4+</title>
+    <title>A4+ (Recursion)</title>
   </head>
   <body>
     <script>
-      let wordStr =
-        "Пустите! - Летит супу миска Максиму. - Пустите, летит суп!";
+      let wordStr = prompt("Введите фразу палиндром");
 
       function checkPalindrome(wordStr) {
         let ignoreChar = /['!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~\s]/g;
-        let ignoreCharText = wordStr.replace(ignoreChar, "").replace(/[ё]/g, "е").replace(/[ъ]/g, "ь").toLowerCase();
-        for ( let i = 0, e = ignoreCharText.length - 1; i < ignoreCharText.length; i++, e--) {
-          if (ignoreCharText[i] !== ignoreCharText[e]) {
-            return false;
-            break;
-          } else {
-            return true;
-          }
+        let ignoreCharText = wordStr
+          .replace(ignoreChar, "")
+          .replace(/[ё]/g, "е")
+          .replace(/[ъ]/g, "ь")
+          .toLowerCase();
+        let wordStrLength = ignoreCharText.length;
+        if (wordStrLength > 2) {
+          return true;
         }
+        if (ignoreCharText[0] === ignoreCharText[wordStrLength - 1]) {
+          return checkPalindrome(ignoreCharText.slice(1, wordStrLength - 1));
+        }
+        return false;
       }
 
       let result = checkPalindrome(wordStr);
-      console.log(result);
+      alert(result);
     </script>
   </body>
 </html>

@@ -8,12 +8,9 @@
   </head>
   <body>
     <script>
-
-      let wordStr = "Пустите! - Летит супу миска Максиму. - Пустите, летит суп!";
-
+      let wordStr = prompt("Введите фразу палиндром");
       function checkPalindrome(wordStr) {
-        let ignoreChar =
-          /['!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~\s]/g;
+        let ignoreChar = /['!"#$%&()*+,\-.\/:;<=>?@\[\]^_`{|}~\s]/g;
         let ignoreCharText = wordStr
           .replace(ignoreChar, "")
           .replace(/[ё]/g, "е")
@@ -34,8 +31,7 @@
       }
 
       let result = checkPalindrome(wordStr);
-      console.log(result);
-
+      alert(result);
     </script>
   </body>
 </html>

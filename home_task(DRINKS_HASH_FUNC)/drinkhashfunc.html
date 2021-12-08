@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DRINK_HASH_FUNC</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn {
+      width: 300px;
+      height: 30px;
+      margin: 20px;
+      background-color: #ece89d;
+      font-size: 15px;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <input type="button" value="Вводим информацию о напитке" class="btn" onclick="addIfno()"/>
+      <input type="button" value="Получаем информацию о напитке" class="btn" onclick="getInfo()"/>
+      <input type="button" value="Удаляем информацию о напитке" class="btn" onclick="delInfo()"/>
+      <input type="button" value="Список всех напитков" class="btn" onclick="getListKeys()"/>
+    </div>
+    <script>
+      function HashStorageFunc() {
+        const body = document.querySelector("body");
+        const inps = document.querySelectorAll("input");
+        let drinkStorage = {};
+        
+      }
+    </script>
+  </body>
+</html>
