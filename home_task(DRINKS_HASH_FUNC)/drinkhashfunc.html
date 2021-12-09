@@ -28,17 +28,101 @@
   </style>
   <body>
     <div class="container">
-      <input type="button" value="Вводим информацию о напитке" class="btn" onclick="addIfno()"/>
-      <input type="button" value="Получаем информацию о напитке" class="btn" onclick="getInfo()"/>
-      <input type="button" value="Удаляем информацию о напитке" class="btn" onclick="delInfo()"/>
-      <input type="button" value="Список всех напитков" class="btn" onclick="getListKeys()"/>
+      <input
+        type="button"
+        value="Вводим информацию о напитке"
+        class="btn"
+        onclick="infoDrink()"
+      />
+      <input
+        type="button"
+        value="Получаем информацию о напитке"
+        class="btn"
+        onclick="getInfo()"
+      />
+      <input
+        type="button"
+        value="Удаляем информацию о напитке"
+        class="btn"
+        onclick="delInfo()"
+      />
+      <input
+        type="button"
+        value="Список всех напитков"
+        class="btn"
+        onclick="getListKeys()"
+      />
     </div>
     <script>
-      function HashStorageFunc() {
-        const body = document.querySelector("body");
-        const inps = document.querySelectorAll("input");
-        let drinkStorage = {};
-        
+      const body = document.querySelector("body");
+      const inps = document.querySelectorAll("input");
+
+      class HashStorageFunc {
+        constructor() {
+          let storeHash = {};
+        }
+
+        addValue = function (key, value) {
+          storeHash[key] = value;
+        };
+
+        getValue = function (key) {
+          if (key in storeHash) {
+            return storeHash[key];
+          } else {
+            return undefined;
+          }
+        };
+
+        deleteValue = function (key) {
+          if (key in storeHash) {
+            delete storeHash[key];
+            return true;
+          } else {
+            return false;
+          }
+        };
+
+        getKeys = function () {
+          let keys = [];
+          return Array.keys(storeHash[key]);
+        };
+      }
+
+      let drinkStorage = new HashStorageFunc();
+
+      function infoDrink() {
+        let nameDrink = prompt("Введите название напитка", "");
+        while (nameDrink === "" || nameDrink === " ") {
+          nameDrink = prompt("Введите название напитка");
+        }
+        let haveAlco = confirm("Присутствует ли алкоголь в напитке?");
+        if (haveAlco === true) {
+          return "Алкогольный";
+        } else {
+          return "Безалкогольный";
+        }
+        let recipeВrink = prompt("Введите рецепт напитка","");
+        while (recipeВrink === "" || recipeВrink === " ") {
+          let recipeВrink = prompt("Введите рецепт напитка","");
+        }
+        return drinkStorage.addValue(nameDrink, {alco: haveAlco, recipe: recipeВrink});
+      }
+
+      function getInfo() {
+        let nameDrink = prompt("Введите название напитка, о котором хотите узнать информацию?","");
+        while (nameDrink === "" || nameDrink === " ") {
+          nameDrink = prompt("Введите название напитка, о котором хотите узнать информацию?","");
+        }
+        let drinkInfoStorage = drinkStorage.getValue(nameDrink);
+        if (drinkInfoStorage === undefined) {
+          alert(`К сожалению, информации о ${nameDrink} нет`);
+        } else {
+          alert
+          (`Напиток ${nameDrink}\n +
+            Содержание алкоголя ${}\n +
+            Описание ${}`)
+        }
       }
     </script>
   </body>
