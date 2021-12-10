@@ -78,10 +78,10 @@
         }
         let haveAlco = confirm("Присутствует ли алкоголь в напитке?");
         let recipeВrink = prompt("Введите рецепт напитка", "");
-        while (recipeВrink === "" || recipeВrink === " ") {
-          let recipeВrink = prompt("Введите рецепт напитка", "");
+        while (recipeDrink === "" || recipeВrink === " ") {
+          let recipeDrink = prompt("Введите рецепт напитка", "");
         }
-        return drinkStorage.addValue(nameDrink, {alco: haveAlco,recipe: recipeВrink,});
+        return drinkStorage.addValue(nameDrink, {alco: haveAlco,recipe: recipeDrink,});
       }
 
       function getInfo() {
@@ -107,7 +107,7 @@
         if (drinkStorage.deleteValue(nameDrink) === true) {
           alert("Удален");
         } else {
-          alert("Этого напитка нету в списке");
+          alert("Этого напитка в базе нет");
         }
       }
 
