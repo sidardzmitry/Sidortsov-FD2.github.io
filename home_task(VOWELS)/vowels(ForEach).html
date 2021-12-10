@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VOWELS</title>
+    <title>VOWELS (ForEach)</title>
   </head>
   <body>
     <script>
@@ -13,16 +13,16 @@
         let strVowels = ["у", "е", "ы", "а", "о", "э", "я", "и", "ю", "ё", "u", "o", "i", "e", "a"];
         let strVowelsArr = strWord.toLowerCase().split("");
         let newStrVowels = 0;
-        strVowelsArr.forEach((el) => {
+        strVowelsArr.forEach((elem) => {
           for (let i = 0; i < strVowels.length - 1; i++) {
-            if (el === strVowels[i]) {
+            if (elem === strVowels[i]) {
               newStrVowels++;
             }
           }
         });
         return newStrVowels;
       }
-      alert(getCountVowels(strWord));
+      alert(`Гласных: ${getCountVowels(strWord)}`);
     </script>
   </body>
 </html>

@@ -39,7 +39,7 @@
 
       class HashStorageFunc {
         constructor() {
-          this.storeHash = {};
+          this.storeHash = new Object();
         }
 
         addValue = function (key, value) {
@@ -77,8 +77,8 @@
           nameDrink = prompt("Введите название напитка");
         }
         let haveAlco = confirm("Присутствует ли алкоголь в напитке?");
-        let recipeВrink = prompt("Введите рецепт напитка", "");
-        while (recipeDrink === "" || recipeВrink === " ") {
+        let recipeDrink = prompt("Введите рецепт напитка", "");
+        while (recipeDrink === "" || recipeDrink === " ") {
           let recipeDrink = prompt("Введите рецепт напитка", "");
         }
         return drinkStorage.addValue(nameDrink, {alco: haveAlco,recipe: recipeDrink,});
