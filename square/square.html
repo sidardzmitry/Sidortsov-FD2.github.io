@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .block {
+        width: 400px;
+        height: 400px;
+        background-color: aqua;
+        position: relative;
+        margin: 50px 0 0 35%;
+      }
+      .square {
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        background-color: brown;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="block">
+      <div class="square"></div>
+    </div>
+    <script>
+      let body = document.querySelector("body");
+      let block = document.querySelector(".block");
+      let square = document.querySelector(".square");
+      let leftGo = 0;
+      let topGo = 0;
+
+      body.addEventListener("keydown", (e) => {
+        //console.log(e)
+        if (e.code === "ArrowRight") {
+          leftGo = leftGo + 10;
+          if (leftGo > block.offsetWidth - square.offsetWidth) return;
+          square.style.left = leftGo + "px";
+        }
+        if (e.code === "ArrowLeft") {
+          leftGo = leftGo - 10;
+          if (leftGo > block.offsetWidth - square.offsetWidth) return;
+          square.style.left = leftGo + "px";
+        }
+        if (e.code === "ArrowDown") {
+          topGo = topGo + 10;
+          if (topGo > block.offsetHeight - square.offsetHeight) return;
+          square.style.top = topGo + "px";
+        }
+        if (e.code === "ArrowUp") {
+          topGo = topGo - 10;
+          if (topGo > block.offsetHeight + square.offsetHeight) return;
+          square.style.top = topGo + "px";
+        }
+      });
+    </script>
+  </body>
+</html>
