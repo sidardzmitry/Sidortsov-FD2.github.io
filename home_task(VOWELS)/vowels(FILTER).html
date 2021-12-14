@@ -11,8 +11,8 @@
         const str = prompt("Вести строку","");
         const strVowels = ["у","е","ы","а","о","э","я","и","ю","ё","u","o","i","e","a",];
          const сountVowels = str => 
-          str.split("").filter(char => strVowels.includes(char)).length;
-        alert(`Гласных: ${strVowels(str)}`);
+          str.toLowerCase().split("").filter(char => strVowels.includes(char)).length;
+        alert(`Гласных: ${сountVowels(str)}`);
     </script>
   </body>
 </html>
