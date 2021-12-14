@@ -8,7 +8,15 @@
 </head>
 <body>
     <script>
-        
+        const str = prompt("Вести строку","");
+         const сountVowels = str.trim().split("").reduce((count, char) => {
+             const strVowels = ["у","е","ы","а","о","э","я","и","ю","ё","u","o","i","e","a",];
+            if (strVowels(char) in str) {
+                count = count + char;
+            }
+            return count;
+          },0);
+        alert(`Гласных: ${сountVowels(str)}`);
     </script>
 </body>
 </html>
