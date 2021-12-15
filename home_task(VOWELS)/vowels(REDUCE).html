@@ -8,19 +8,17 @@
 </head>
 <body>
     <script>
-        const str = "Вести строку";
+        const str = prompt("Ввести строку","");
         const strVowels = ["у","е","ы","а","о","э","я","и","ю","ё","u","o","i","e","a",];
          const splitLine = str.toLowerCase().split("");
          const сountVowels = splitLine.reduce((count, char) => {
-            if (char in strVowels) {
-                return count += char;
+            if (strVowels.indexOf(char) !== -1) {
+                return count += 1;
             } else {
-               return count; 
+                return count;
             }
           },0);
-        console.log(`Гласных: ${сountVowels}`);
-
-
+        alert(`Гласных: ${сountVowels}`);
     </script>
 </body>
 </html>
