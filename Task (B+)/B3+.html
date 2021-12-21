@@ -8,6 +8,7 @@
   </head>
   <body>
     <script>
+      let str = "(2+2)*2"
       function expressionToRpn(str) {
         let arrNumber = [];
         let arrStack = [];
@@ -15,41 +16,71 @@
         let priority;
         for (i = 0; i < str.length; i++) {
           priority = getPriority(str.charAt(i));
+
+          //условие(если числа, то добавляем в массив arrNumber)
           if (priority == 0) {
             arrNumber += str.charAt(i);
           }
+
+          //условие(если  "(", то добавляем в массив arrStack)
           if (priority == 1) {
             arrStack.push(str.charAt(i));
           }
-          if (priority > 1) {
+          
+
+          //условие(1.проверяем, не пустой ли массив arrStack.2.если он не пустой мы бежим по нему, до момента, когда наш текущий индекс не будет больше следующего, выпихивая все элементы по пути в массив arrNumber)
+          if (priority == 2 || priority == 3) {
             arrNumber += " ";
-            while (arrStack != null) {
-              if (arrStack.lastIndexOf >= priority) {
+            while (arrStack.length != 0) {
+              if (arrStack[arrStack.length -1] != 1) {
                 arrNumber += arrStack.pop();
               } else {
                 break;
               }
-              arrStack.push(str.charAt(i));
             }
+            arrStack.push(str.charAt(i));
           }
+          //условие(бежим по массиву arrStack, до тех пор пока нам не встретится "(", выпихивая все элементы в arrNumber, и потом удаляем "(")
           if (priority == -1) {
             arrNumber += " ";
-            while (arrStack.lastIndexOf != 1) {
-              arrNumber = +arrStack.pop();
+            while (arrStack[arrStack.length -1] != 1) {
+              arrNumber += arrStack.pop();
+              break;
             }
             arrStack.pop();
           }
-        }
-        while (arrStack != null) {
+
+          //условие(пока массив arrStack не пустой, мы добавляем элементы в arrNumber)
+          while (arrStack.length != 0) {
           arrNumber += arrStack.pop();
+          break;
+        }
         }
         return arrNumber;
       }
-      console.log(expressionToRpn("(2+2)*2"));
+      console.log(expressionToRpn(str))
 
-      function answerToRpn(strRpn) {
-        return 0;
+
+      function answerToRpn(str) {
+        let arrOperand = [];
+        let resultTwo = [];
+        let i = 0;
+        for (i = 0; i < str.length; i++) {
+          if (str.charAt(i) == " ") {
+            continue;
+          }
+          if (str.charAt(i) == 0) {
+            while (str.charAt(i) != " " && (str.char(i) == 0)) {
+              arrOperand += str.charAt(i++);
+              if (i == str.length) {
+                break;
+              }
+          }
+        }
+        //resultTwo.push(parseInt(arrOperand))
       }
+    }
+
 
       function getPriority(char) {
         if (char == "*" || char == "/") {

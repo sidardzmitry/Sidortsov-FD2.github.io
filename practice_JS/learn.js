@@ -7,17 +7,20 @@
 //     return str;
 // };
 // console.log(calculator(str));
-
-const tree = "./professional javascript/lesson img/tree.png";
-const water = "./professional javascript/lesson img/water.png";
-const flower = "./professional javascript/lesson img/flower.png";
+const body = document.querySelector("body");
+const tree = "/lesson_img/tree.png";
+const water = "/lesson_img/water.png";
+const flower = "/lesson_img/flower.png";
 
 const area = document.querySelector("#area");
+area.style.water = "500px";
+area.style.height = "500px";
+body.appendChild(area);
 
 const arrArea = [
-  [1, 0, 2],
-  [2, 1, 0],
-  [0, 2, 1],
+  [1, 0, 2, 0, 1, 2],
+  [2, 1, 0, 1, 0, 2],
+  [0, 2, 1, 0, 2, 1],
 ];
 
 arrArea.forEach((row) => {
