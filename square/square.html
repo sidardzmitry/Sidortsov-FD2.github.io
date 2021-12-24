@@ -41,7 +41,7 @@
         if (e.code === "ArrowRight") {
           leftGo += 10;
           square.style.left = leftGo + "px";
-          if (leftGo >= 350) {
+          if (leftGo >= 300) {
             leftGo -= 10;
           }
         }
@@ -55,8 +55,8 @@
         if (e.code === "ArrowDown") {
           topGo += 10;
           square.style.top = topGo + "px";
-          // if (topGo > block.offsetHeight - square.offsetHeight) return;
-          if ( topGo >= 350) {
+          // if(topGo > block.offsetHeight - square.offsetHeight) return;
+          if ( topGo >= 300) {
             topGo -= 10
           }
         }
