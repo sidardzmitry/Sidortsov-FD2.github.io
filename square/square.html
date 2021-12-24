@@ -11,11 +11,12 @@
         padding: 0;
       }
       .block {
-        width: 400px;
-        height: 400px;
+        width: 350px;
+        height: 350px;
         background-color: aqua;
+        border: 1px solid black;
         position: relative;
-        margin: 50px 0 0 35%;
+        margin: 100px 0 0 35%;
       }
       .square {
         position: absolute;
@@ -37,7 +38,6 @@
       let topGo = 0;
 
       body.addEventListener("keydown", (e) => {
-        //console.log(e)
         if (e.code === "ArrowRight") {
           leftGo += 10;
           square.style.left = leftGo + "px";
