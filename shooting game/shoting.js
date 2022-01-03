@@ -1,6 +1,7 @@
 let body = document.querySelector('body');
 let beer = document.querySelectorAll('.cola');
 let count = document.querySelector('.count strong');
+let shot = document.querySelector('.shot')
 let counter = 0;
 
 document.body.addEventListener('click', playShot);
@@ -8,10 +9,11 @@ document.body.addEventListener('click', playShot);
 function playShot (e) {
     let el = e.target;
     if (el.classList.contains('cola')) {
+        shot.play();
         counter++;
         count.textContent = counter;
         el.classList.add('drop');
-        if (counter ===5) {
+        if (counter === 5) {
             setTimeout(replay,400);
         }
     }
