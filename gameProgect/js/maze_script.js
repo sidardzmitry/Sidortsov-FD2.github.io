@@ -13,7 +13,6 @@ window.onload = function () {
   canvas = document.querySelector("#canvas");
   context = canvas.getContext("2d");
   drawMaze("/gameProgect/assets/maze40sol.svg", 307, 0);
-  window.onkeydown = processKey;
 };
 
 //Создаем функцию которая загрузит наш лабиринт...
@@ -45,7 +44,7 @@ function drawMaze(mazeFile, startingX, startingY) {
 };
 
 //Функция которая обрабатывает нажатие клавишь...
-let processKey = body.addEventListener('keydown',(e) => {
+body.addEventListener('keydown',(e) => {
   stopX = 0;
   stopY = 0;
 
@@ -63,7 +62,6 @@ let processKey = body.addEventListener('keydown',(e) => {
     stopY += 1;
   }
 });
-
 //Функция перерисовки на холсте...
 function redraw() {
   if (stopX != 0 || stopY != 0) {
@@ -75,7 +73,6 @@ function redraw() {
     x += stopX;
     y += stopY;
 
-    imgFace = document.querySelector('.face');
     context.drawImage(imgFace, x, y);
   }
   timer = setTimeout(redraw(), 10);
