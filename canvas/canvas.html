@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CANVAS</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgba(0, 0, 0, .8);
+      }
+      canvas {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="canvas"></canvas>
+
+    <script>
+      canvas = document.querySelector("#canvas");
+      context = canvas.getContext("2d");
+
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      context.strokeStyle = '#1dd4c2';
+      context.lineWidth = 20;
+      context.lineCap = 'round';
+      context.lineJoin = 'round';
+      
+      //начало верхних линий вправо...
+      context.beginPath();
+      context.moveTo(30, 30);
+      context.lineTo(250, 30);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(470, 30);
+      context.lineTo(670, 30);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(890, 30);
+      context.lineTo(1090, 30);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(1310, 30);
+      context.lineTo(1510, 30);
+      context.stroke();
+
+      //начало левых линий вниз...
+      context.beginPath();
+      context.moveTo(30, 30);
+      context.lineTo(30, 250);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(30, 300);
+      context.lineTo(30, 400);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(30, 450);
+      context.lineTo(30, 650);
+      context.stroke();
+
+      //начало нижних линий вправо...
+      context.beginPath();
+      context.moveTo(30, 650);
+      context.lineTo(250, 650);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(470, 650);
+      context.lineTo(670, 650);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(890, 650);
+      context.lineTo(1090, 650);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(1310, 650);
+      context.lineTo(1510, 650);
+      context.stroke();
+
+      //начало правой вертикальной линии вверх...
+      context.beginPath();
+      context.moveTo(1510, 650);
+      context.lineTo(1510, 450);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(1510, 400);
+      context.lineTo(1510, 300);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(1510, 250);
+      context.lineTo(1510, 30);
+      context.stroke();
+
+      //теперь рисуем 2 линии вертикально и 2 линии горизонтально...
+      //первая линия вертикально вниз...
+      context.beginPath();
+      context.moveTo(100,90);
+      context.lineTo(100,280);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(100,380);
+      context.lineTo(100,600);
+      context.stroke();
+
+      //первая линия горизонтально вправо...
+      context.beginPath();
+      context.moveTo(100,600);
+      context.lineTo(300,600);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(400,600);
+      context.lineTo(700,600);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(800,600);
+      context.lineTo(1100,600);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(1200,600);
+      context.lineTo(1410,600);
+      context.stroke();
+
+      //первая линия вертикально вверх...
+      context.beginPath();
+      context.moveTo(1410,600);
+      context.lineTo(1410,380);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(1410,280);
+      context.lineTo(1410,90);
+      context.stroke();
+
+      //первая линия горизонтально вправо...
+      context.beginPath();
+      context.moveTo(100,90);
+      context.lineTo(300,90);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(400,90);
+      context.lineTo(700,90);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(800,90);
+      context.lineTo(1100,90);
+      context.stroke();
+
+      context.beginPath();
+      context.moveTo(1100,90);
+      context.lineTo(1410,90);
+      context.stroke();
+
+    </script>
+  </body>
+</html>
