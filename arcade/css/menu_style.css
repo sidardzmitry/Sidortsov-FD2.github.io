@@ -70,3 +70,14 @@ body {
     margin-top: 20%;
 }
 
+/*sound on-off*/
+.img_none {
+    display: none;
+}
+.img_on {
+    display: block;
+}
+.img_off {
+    display: block;
+}
+
