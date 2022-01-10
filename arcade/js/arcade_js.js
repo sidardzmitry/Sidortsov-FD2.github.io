@@ -1,6 +1,8 @@
 let container = document.querySelector(".container");
 let display = document.querySelector(".score");
-let music = document.querySelector(".eat");
+let soundEat = document.querySelector(".eat");
+let soundBonus = document.querySelector('.bonus');
+let soundGameOver = document.querySelector('.finish');
 let width = 28;
 let score = 0;
 const layout = [
@@ -128,7 +130,7 @@ document.addEventListener("keyup", movePacman);
 //Создаем функцию (съеденая еда)...
 function foodEaten() {
   if (squares[pacmanCurrentIndex].classList.contains("pacmanFood")) {
-    music.play(); //звук при съедании еды...
+    soundEat.play(); //звук при съедании еды...
     score++; //счетчик увеличиваем...
     display.innerHTML = score; //отрисовываем счетчик на странице...
     squares[pacmanCurrentIndex].classList.remove("pacmanFood"); //удаляем класс для съеденой еды...
@@ -138,7 +140,7 @@ function foodEaten() {
 //Создаем функцию съедаем бонусную еду...
 function powerPellet() {
   if (squares[pacmanCurrentIndex].classList.contains("powerpellet")) {
-    music.play();
+    soundBonus.play();
     score += 10;
     armys.forEach((army) => (army.isScared = true));
     setInterval(unScared, 10000);
@@ -163,10 +165,10 @@ class Army {
 }
 
 let armys = [
-  new Army("army1", 348, 250),
-  new Army("army2", 376, 400),
-  new Army("army3", 351, 300),
-  new Army("army4", 379, 500),
+  new Army('army1', 348, 250),
+  new Army('army2', 376, 400),
+  new Army('army3', 351, 300),
+  new Army('army4', 379, 500),
 ];
 
 armys.forEach((army) => {
@@ -198,7 +200,7 @@ function moveArmy(army) {
 
     //если призрак сейчас напуган и на нем герой...
     if ( army.isScared && squares[army.currentIndex].classList.contains('pacman')) {
-      music.play();
+      soundBonus.play();
       squares[army.currentIndex].classList.remove(
         army.classList, 'army', 'armyScr');
       army.currentIndex = army.startIndex;
@@ -213,16 +215,16 @@ function checkForGameOver() {
   if (squares[pacmanCurrentIndex].classList.contains('army') && !squares[pacmanCurrentIndex].classList.contains('armyScr')) {
     document.removeEventListener('keyup', movePacman);
     armys.forEach(army => clearInterval(army.timerId));
-    //mus.play() //запускаем звук конца игры...
+    soundGameOver.play(); //запускаем звук конца игры...
     setTimeout(function() {
-      console.log('Game Over')
+      console.log('Game Over');
     }, 300);
   };
 };
 
 //функция проверки на победителя...
 function checkForWin() {
-  if (score === 250) {
+  if (score === 100) {
     document.removeEventListener('keyup', movePacman);
     armys.forEach(army => clearInterval(army.timerId));
     setTimeout(function() {
