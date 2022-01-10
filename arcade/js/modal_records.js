@@ -15,12 +15,11 @@ let modals = document.querySelectorAll("modal");
 btnAudioPlay.addEventListener("click", () => {
     if (soundMenu.paused) {
       soundMenu.play();
-      imgOff.classList.remove('img_on');
+      imgOff.classList.remove('img_none');
       imgOn.classList.add("img_on");
-    };
-    if (soundMenu.play) {
+    } else {
       soundMenu.pause();
-      imgOn.classList.remove("img_on");
+      imgOn.classList.remove("img_none");
       imgOff.classList.add("img_on");
     };
 });
