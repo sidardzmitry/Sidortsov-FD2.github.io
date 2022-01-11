@@ -1,29 +1,20 @@
-* {
+body {
     margin: 0;
     padding: 0;
-}
-body {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    position: absolute;
     display: flex;
     align-items: center;
     flex-direction: column;
-}
-h1 {
-    align-items: center;
+    position: relative;
 }
 .container {
-    width: 644px;
-    height: 644px;
-    border: 5px solid red;
+    width: 100%;
+    height: 710px;
     display: flex;
     flex-wrap: wrap;
 }
 .container div {
-    width: 23px;
-    height: 23px;
+    width: 54px;
+    height: 26px;
 }
 .wall {
     background: url(../assets/grass.svg);

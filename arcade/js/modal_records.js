@@ -1,9 +1,8 @@
 //глобальные переменные для музыки на странице меню...
 let soundMenu = document.querySelector(".sound_menu");
 let btnAudioPlay = document.querySelector(".btn_audio_play");
-let imgOnOff = document.querySelectorAll(".img_none");
-let imgOn = document.querySelector('.img1');
-let imgOff = document.querySelector('.img2');
+let imageOnOff = document.querySelector('.imageOnOff');
+
 
 //глобальные переменные для модалки с рекордами...
 let modalOver = document.querySelector(".modal-over");
@@ -15,12 +14,12 @@ let modals = document.querySelectorAll("modal");
 btnAudioPlay.addEventListener("click", () => {
     if (soundMenu.paused) {
       soundMenu.play();
-      imgOff.classList.remove('img_none');
-      imgOn.classList.add("img_on");
+      btnAudioPlay.classList.remove('imageOff');
+      btnAudioPlay.classList.add('imageOn');
     } else {
       soundMenu.pause();
-      imgOn.classList.remove("img_none");
-      imgOff.classList.add("img_on");
+      btnAudioPlay.classList.remove('imageOn');
+      btnAudioPlay.classList.add('imageOff');
     };
 });
 
