@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        let canvas = {
+            c: null,
+            canvas: null,
+            sprite: null,
+            frame: 0,
+            init() {
+                this.c = document.querySelector('canvas').getContext('2d');
+                this.canvas = document.getElementById('canvas');
+
+                this.canvas.width = window.innerWidth
+                this.canvas.height = window.innerHeight
+            },
+            anim() {
+                setInterval(() => {
+                    this.frame++
+                    if(this.frame > 11) {
+                        this.frame = 0;
+                    }
+            }, 100)
+            },
+            render() {
+                this.sprite = new Image()
+                this.sprite.src = '../spriteSanta/Run (1).png'
+                this.c.drawImage(this.sprite,this.frame * 100,0,0,100,100,0,0,100,100)
+            },
+            run() {
+                window.requestAnimationFrame(()=> {
+                    this.render()
+                    this.run()
+                })
+            },
+            start() {
+                this.init()
+                this.anim()
+                this.run()
+            },
+        }
+        window.addEventListener('load', () => {
+            canvas.start()
+        })
+    </script>
+</body>
+</html>

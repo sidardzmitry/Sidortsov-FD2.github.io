@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../santa/css/santa.css" />
+    <title>Santa and Claus</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="block_menu">
+        <h1 class="name_game">Santa and Claus</h1>
+        <div class="links">
+          <div class="btn">
+            <a href="#" class="link play">Play New Game</a>
+          </div>
+          <div class="btn">
+            <a href="#" class="link records" data-target="linkRec">Records</a>
+          </div>
+          <div class="btn">
+            <a href="#" class="link setting">Setting</a>
+          </div>
+          <button class="btn_audio_play"></button>
+        </div>
+      </div>
+    </div>
+
+    <audio src="../santa/assets/sound_menu.mp3" class="sound_menu"></audio>
+
+    <!--modal records in game-->
+    <div class="modals">
+      <div class="modal modal-over">
+        <div class="modal modal-record">Данные</div>
+      </div>
+    </div>
+
+    <!--file JS-->
+    <script src="../santa/js/santa.js"></script>
+  </body>
+</html>
