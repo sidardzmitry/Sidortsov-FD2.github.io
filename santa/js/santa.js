@@ -2,35 +2,35 @@
 let soundMenu = document.querySelector('.sound_menu');
 let btnAudioPlay = document.querySelector('.btn_audio_play');
 
-//условие при котором включается или выключаетсся звук мелодии...
+//условие при котором включается или выключаетсся музыка...
 btnAudioPlay.addEventListener("click", () => {
     if (soundMenu.paused) {
       soundMenu.play();
-      btnAudioPlay.classList.remove('imageOff');
-      btnAudioPlay.classList.add('imageOn');
+      btnAudioPlay.classList.remove('soundOff');
+      btnAudioPlay.classList.add('soundOn');
     } else {
       soundMenu.pause();
-      btnAudioPlay.classList.remove('imageOn');
-      btnAudioPlay.classList.add('imageOff');
+      btnAudioPlay.classList.remove('soundOn');
+      btnAudioPlay.classList.add('soundOff');
     };
 });
 
 //глобальные переменные для модалки с рекордами...
-let modalOver = document.querySelector(".modal-over");
-let modalRec = document.querySelector(".modal-record");
-let linkRecord = document.querySelector(".records");
-let modals = document.querySelectorAll("modal");
+let modalOver = document.querySelector('.modal_over');
+let modalRecord = document.querySelector('.modal_record');
+let linkRecord = document.querySelector('.records');
+let modals = document.querySelectorAll('.modal');
 
 //делаем небольшую модалку где будет показываться рекорды игроков...
-linkRecord.addEventListener("click", (e) => {
-    modalRec.classList.add("modal-visible");
-    modalOver.classList.add("modal-overlay-visible");
+linkRecord.addEventListener('click', (e) => {
+    modalRecord.classList.add('modal_visible');
+    modalOver.classList.add('modal_overlay_visible');
   });
   
-  modalOver.addEventListener("click", (e) => {
+  modalOver.addEventListener('click', (e) => {
     //console.log(e.target);
     if (e.target === modalOver) {
-      modalRec.classList.remove("modal-visible");
-      modalOver.classList.remove("modal-overlay-visible");
+      modalRecord.classList.remove('modal_visible');
+      modalOver.classList.remove('modal_overlay_visible');
     }
   });

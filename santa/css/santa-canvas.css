@@ -1,0 +1,26 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.container_canvas{
+    width: 100%;
+    height: 100vh;
+    background: url(../assets/santacanvasbg.jpg) no-repeat;
+    position: relative;
+}
+.block_canvas{
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    width: 924px;
+    height: 728px;
+    border: 1px solid red;
+}
+.score{
+    position: absolute;
+    color: white;
+    right: 0;
+    top: 0;
+}
