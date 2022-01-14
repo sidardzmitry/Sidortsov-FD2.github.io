@@ -51,7 +51,7 @@ const layout = [
 
 let squares = [];
 
-//Пишим функцию CreateBord, запускаем функцию для добавления классов(картинки) в массив...
+//Пишем функцию CreateBord, запускаем функцию для добавления классов(картинки) в массив...
 function createBoard() {
   for (let i = 0; i < layout.length; i++) {
     let square = document.createElement("div");

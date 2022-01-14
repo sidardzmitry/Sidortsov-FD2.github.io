@@ -15,12 +15,52 @@ body{
     display: flex;
     flex-wrap: wrap;
     width: 924px;
-    height: 728px;
-    border: 1px solid red;
+    height: 731px;
 }
-.score{
+.santa_counter{
     position: absolute;
     color: white;
     right: 0;
     top: 0;
+    font-size: 50p;
+}
+.block_canvas div{
+    width: 33px;
+    height: 26px;
+}
+.wall{
+    background: url(../assets/wall.png);
+}
+.bonus_eat{
+    background:url(../assets/bonus.png);
+}
+.santa_eat{
+    background:url(../assets/eat.png);
+}
+.snowman_one{
+    background:url(../assets/snowman.svg);
+}
+.snowman_two{
+    background:url(../assets/snowman.svg);
+}
+.snowman_three{
+    background:url(../assets/snowman.svg);
+}
+.snowman_four{
+    background:url(../assets/snowman.svg);
+}
+.snowman_five{
+    background:url(../assets/snowman.svg);
+}
+.snowman_six{
+    background:url(../assets/snowman.svg);
+}
+.santa{
+    background:url(../assets/santa.svg);
+}
+.zona_snowman{
+    background:url(../assets/zona_snowman.svg);
+}
+.elf{
+    background: url(../assets/elf.svg);
 }
