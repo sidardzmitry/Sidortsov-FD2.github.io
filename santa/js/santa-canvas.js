@@ -5,30 +5,33 @@ const soundFinish = document.querySelector('.finish');
 const soundBackground = document.querySelector('.sound_background');
 
 //глобальные переменные игрового поля...
+const body = document.querySelector('body');
 const blockCanvas = document.querySelector('.block_canvas');
 const santaCounter = document.querySelector('.santa_counter');
+let arrSquares = [];
+const width = 18;//длинна поля...
+let counterPoints = 0;//счетчик очков...
+
+
 
 //создаем массив игрового поля...
 const arraySanta = [
-1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1,
-1, 0, 1, 1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1,
-0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1,
-1, 0, 1, 1, 0, 1, 1, 1, 1, 0, 1, 0, 1, 1,
-0, 0, 1, 1, 0, 0, 1, 1, 0, 0, 1, 0, 0, 1,
-1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-1, 0, 1, 1, 0, 1, 0, 1, 1, 0, 0, 1, 1, 1,
-1, 0, 1, 1 ,0 ,1 ,0 ,1 ,1 ,0 ,4 ,4 ,4 ,4,
-1, 0, 1, 1, 0, 1, 1, 1, 1, 4, 4, 1, 2, 2,
-1, 0, 1, 1, 0, 1, 1, 1, 1, 4, 1, 1, 2, 2,
-1, 0, 1, 1, 0, 0, 0, 1, 1, 4, 1, 2, 2, 2,
-1, 0, 1, 1, 0, 1, 0, 1, 1, 4, 1, 2, 2, 2,
-4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 1, 1, 1, 1,
-1, 0, 1, 1, 0, 1, 1, 0, 1, 4, 4, 4, 4, 4,
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
+1, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1, 0, 1,
+1, 0, 0, 0, 0, 0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 1,
+1, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1, 0, 1,
+1, 0, 0, 1, 0, 0, 4, 4, 4, 4, 4, 4, 0, 1, 0, 1, 0, 1,
+1, 0, 0, 0, 0, 0, 4, 2, 2, 2, 2, 4, 0, 1, 0, 1, 0, 1,
+1, 0, 1, 0, 0, 0, 4, 2, 2, 2, 2, 4, 0, 0, 0, 0, 0, 1,
+1, 0, 1, 0, 0, 0, 4, 2, 2, 2, 2, 4, 0, 1, 1, 1, 0, 1,
+1, 0, 1, 0, 0, 0, 4, 4, 2, 2, 4, 4, 0, 0, 0, 0, 0, 1,
+1, 0, 1, 0, 0, 0, 0, 0, 4, 4, 0, 0, 0, 0, 1, 1, 0, 1,
+1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
+1, 0, 1, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1, 1, 0, 1, 1, 1,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
 ];
-
-const width = 18;//длинна поля...
-let counterPoints = 0;//счетчик очков...
 
 //включаем музыку сразу при загрузке странице...
 // window.onload = function () {
@@ -36,8 +39,6 @@ let counterPoints = 0;//счетчик очков...
 //     soundBackground.volume = 0.5;
 //     soundBackground.loop = true;
 // };
-
-let arrSquares = [];
 
 //функция для для добавления картинов в массив игрового поля...
 function createBlockCanvas() {
@@ -61,5 +62,15 @@ function createBlockCanvas() {
 //вызываем функцию...
 createBlockCanvas();
 
-    // let santaIndex = 490;
-    // arrSquares[santaIndex].classList.add('santa');
+//место расположение санты...
+let santaIndex = 210;
+arrSquares[santaIndex].classList.add('santa');
+
+//задаем движение санте по клавиатуре...
+function moveSanta(e) {
+    squares[santaIndex].classList.remove('santa');
+
+    body.addEventListener('keydown', (e) => {
+        if(e.code === 'ArrowLeft')
+    })
+};
