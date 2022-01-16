@@ -82,10 +82,7 @@ function movePacman(e) {
   //пишем перемещение для героя...
   switch (e.keyCode) {
     case 37:
-      if (
-        pacmanCurrentIndex % width !== 0 &&
-        !squares[pacmanCurrentIndex - 1].classList.contains("wall") &&
-        !squares[pacmanCurrentIndex - 1].classList.contains("notallow")
+      if ( pacmanCurrentIndex % width !== 0 && !squares[pacmanCurrentIndex - 1].classList.contains("wall") &&!squares[pacmanCurrentIndex - 1].classList.contains("notallow")
       ) {
         pacmanCurrentIndex -= 1;
         break;
@@ -156,11 +153,11 @@ function powerPellet() {
     setInterval(unScared, 10000);
     squares[pacmanCurrentIndex].classList.remove("powerpellet");
   }
-}
+};
 
 function unScared() {
   armys.forEach((army) => (army.isScared = false));
-}
+};
 
 //Создаем функцию (класс) и создаем врагов...
 class Army {

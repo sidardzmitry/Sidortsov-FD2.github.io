@@ -29,13 +29,14 @@ body{
     height: 48px;
 }
 .wall{
-    background: url(../assets/wall.png);
+    background: url(../assets/ice_cube.svg);
 }
 .bonus_eat{
-    background:url(../assets/bonus.png);
+    background:url(../assets/bonus.svg);
 }
 .santa_eat{
-    background:url(../assets/eat.png);
+    background:url(../assets/stars_animation_3.svg);
+    /* animation: animstar 1s ease-in-out infinite alternate; */
 }
 .snowman_one{
     background:url(../assets/snowman.svg);
@@ -64,3 +65,10 @@ body{
 .elf{
     background: url(../assets/elf.svg);
 }
+
+/* @keyframes animstar {
+    from{background:url(../assets/stars_animation_1.svg);}
+    35%{background:url(../assets/stars_animation_2.svg);}
+    70%{background:url(../assets/stars_animation_3.svg);}
+    to{background:url(../assets/stars_animation_4.svg);}
+} */
