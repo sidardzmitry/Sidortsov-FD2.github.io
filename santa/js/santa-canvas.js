@@ -32,11 +32,11 @@ const arraySanta = [
 ];
 
 //включаем музыку сразу при загрузке странице...
-// window.onload = function () {
-//     soundBackground.play();
-//     soundBackground.volume = 0.5;
-//     soundBackground.loop = true;
-// };
+window.onload = function () {
+    soundBackground.play();
+    soundBackground.volume = 0.5;
+    soundBackground.loop = true;
+};
 
 //функция для для добавления картинов в массив игрового поля...
 function createBlockCanvas() {
@@ -132,6 +132,8 @@ function moveSanta(e) {
   //здесь будем вызывать функции другие...
   eatSantaFood();
   eatSantaBonus();
+  checkForFinish();
+  checkForWinner();
 };
 
 document.addEventListener('keyup', moveSanta);
@@ -152,5 +154,95 @@ function eatSantaBonus() {
     soundBonus.play();
     counterPoints = counterPoints + 10;
     arrSquares[santaIndex].classList.remove('bonus_eat');
+    grinches.forEach((grinch) => (grinch.isCold = true));
+    setInterval(unCold, 10000);
+    arrSquares[santaIndex].classList.remove('bonus_eat');
+  };
+};
+
+function unCold() {
+  grinches.forEach((grinch) => (grinch.isCold = false));
+};
+
+//создаем функцию класс с гринвичи...
+class Grinch {
+  constructor(className, startIndex,speed) {
+    this.className = className,
+    this.startIndex = startIndex,
+    this.speed = speed,
+    this.timeId = NaN,
+    this.currentIndex = startIndex,
+    this.isCold = false;
+  };
+};
+
+let grinches = [
+  new Grinch('grinch_one', 115, 250),
+  new Grinch('grinch_two', 118, 300),
+  new Grinch('grinch_three', 134, 350),
+  new Grinch('grinch_four', 135, 400),
+  new Grinch('grinch_five', 151, 450),
+  new Grinch('grinch_six', 154, 500),
+];
+
+grinches.forEach((grinch) => {
+  arrSquares[grinch.currentIndex].classList.add(grinch.className);
+  arrSquares[grinch.currentIndex].classList.add('grinch');
+});
+
+//создаем функцию которая будет перемещать гринчи случайным образом...
+grinches.forEach((grinch) => moveGrinch(grinch));
+function moveGrinch(grinch) {
+  let directions = [-1, +1, -width, +width];
+  let direction = directions[Math.floor(Math.random() * directions.length)];
+
+  grinch.timeId = setInterval(function() {
+    if(!arrSquares[grinch.currentIndex + direction].classList.contains('wall') && !arrSquares[grinch.currentIndex + direction].classList.contains('grinch')) {
+
+      //удаляем классы...
+      arrSquares[grinch.currentIndex].classList.remove(grinch.className);
+      arrSquares[grinch.currentIndex].classList.remove('grinch', 'grinch_cold');
+      grinch.currentIndex +=direction;
+      arrSquares[grinch.currentIndex].classList.add(grinch.className, 'grinch');
+      //иначе нужно искать другое направление...
+    } else {
+      direction = directions[Math.floor(Math.random() * directions.length)];
+    };
+    //если застыл гринч...
+    if(grinch.isCold) {
+      arrSquares[grinch.currentIndex].classList.add('grinch_cold');
+    };
+
+    //если гринч замерз и санта на нем...
+    if (grinch.isCold && arrSquares[grinch.currentIndex].classList.contains('santa')) {
+      soundBonus.play();
+      arrSquares[grinch.currentIndex].classList.remove(grinch.classList, 'grinch', 'grinch_cold');
+      grinch.currentIndex = grinch.startIndex;
+      counterPoints +=100;
+      arrSquares[grinch.currentIndex].classList.add(grinch.className, 'grinch');
+    };
+  }, grinch.speed);
+};
+
+//создаем функцию окончания игры...
+function checkForFinish() {
+  if(arrSquares[santaIndex].classList.contains('grinch') && !arrSquares[santaIndex].classList.contains('grinch_cold')) {
+    document.removeEventListener('keyup', moveSanta);
+    grinches.forEach(grinch => clearInterval(grinch.timerId));
+    soundFinish.play(); //запускаем звук конца игры...
+    setTimeout(function() {
+      console.log('Game Over');
+    }, 300);
+  };
+};
+
+//функция проверки на победителя...
+function checkForWinner() {
+  if (counterPoints === 100) {
+    document.removeEventListener('keyup', moveSanta);
+    grinches.forEach(grinch => clearInterval(grinch.timerId));
+    setTimeout(function() {
+      console.log('You have Winner');
+    }, 300);
   };
 };

@@ -36,25 +36,7 @@ body{
 }
 .santa_eat{
     background:url(../assets/stars_animation_3.svg);
-    /* animation: animstar 1s ease-in-out infinite alternate; */
-}
-.snowman_one{
-    background:url(../assets/snowman.svg);
-}
-.snowman_two{
-    background:url(../assets/snowman.svg);
-}
-.snowman_three{
-    background:url(../assets/snowman.svg);
-}
-.snowman_four{
-    background:url(../assets/snowman.svg);
-}
-.snowman_five{
-    background:url(../assets/snowman.svg);
-}
-.snowman_six{
-    background:url(../assets/snowman.svg);
+    animation: animstar 1s ease-in-out infinite alternate;
 }
 .santa{
     background:url(../assets/santa.svg);
@@ -62,13 +44,31 @@ body{
 .zona_snowman{
     background:url(../assets/zona_snowman.svg);
 }
-.elf{
-    background: url(../assets/elf.svg);
+.grinch_one{
+    background: url(../assets/grinch.svg);
+}
+.grinch_two{
+    background: url(../assets/grinch.svg);
+}
+.grinch_three{
+    background: url(../assets/grinch.svg);
+}
+.grinch_four{
+    background: url(../assets/grinch.svg);
+}
+.grinch_five{
+    background: url(../assets/grinch.svg);
+}
+.grinch_six{
+    background: url(../assets/grinch.svg);
+}
+.grinch_cold {
+    background: url(../assets/grinch_cold.svg);
 }
 
-/* @keyframes animstar {
+@keyframes animstar {
     from{background:url(../assets/stars_animation_1.svg);}
     35%{background:url(../assets/stars_animation_2.svg);}
     70%{background:url(../assets/stars_animation_3.svg);}
     to{background:url(../assets/stars_animation_4.svg);}
-} */
+}
