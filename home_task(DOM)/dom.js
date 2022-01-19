@@ -17,7 +17,7 @@ function createInput(name, placeholder) {
   inps.style.margin = "0 4px 3px 0";
   inps.setAttribute("placeholder", placeholder);
   return inps;
-}
+};
 
 //вызываем функцию...
 divBox.appendChild(createInput("text", "text"));
@@ -25,7 +25,6 @@ divBox.appendChild(createInput("property", "property"));
 divBox.appendChild(createInput("value", "value"));
 
 //создаем функцию, которая добавляет кнопки...
-
 function createButton(className, nameFunction) {
   const btns = document.createElement("button");
   btns.setAttribute("class", className);
@@ -51,7 +50,7 @@ function createH1() {
   newH1.innerText = newObjEl.text;
   // body.appendChild(newH1);
   divBox.insertAdjacentElement("afterend", newH1);
-}
+};
 
 //функция которая должна принимать свойства и значения из input и добавлять <p></p>...
 function createP() {
@@ -65,7 +64,7 @@ function createP() {
   newP.innerText = newObjElp.text;
   // body.appendChild(newP);
   divBox.insertAdjacentElement("afterend", newP);
-}
+};
 
 //функция которая должна добавлять 3 доп. инпута на страницу для <li></li>...
 function createUlInput() {
@@ -88,4 +87,4 @@ function createLi() {
   newLi.style[newObjElList.propertyLi] = newObjElList.valueLi;
   newLi.innerText = newObjElList.textLi;
   newUl.appendChild(newLi);
-}
+};

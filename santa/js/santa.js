@@ -1,6 +1,7 @@
 //глобальные переменные для музыки на странице меню...
 let soundMenu = document.querySelector('.sound_menu');
 let btnAudioPlay = document.querySelector('.btn_audio_play');
+let newGame = document.querySelector('.play');
 
 //условие при котором включается или выключаетсся музыка...
 btnAudioPlay.addEventListener("click", () => {
@@ -13,6 +14,13 @@ btnAudioPlay.addEventListener("click", () => {
       btnAudioPlay.classList.remove('soundOn');
       btnAudioPlay.classList.add('soundOff');
     };
+});
+
+//выключаем музыку при переходе на другую страницу...
+newGame.addEventListener('click', () => {
+  if(newGame) {
+    soundMenu.pause();
+  };
 });
 
 //глобальные переменные для модалки с рекордами...

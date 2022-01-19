@@ -32,11 +32,11 @@ const arraySanta = [
 ];
 
 //включаем музыку сразу при загрузке странице...
-window.onload = function () {
-    soundBackground.play();
-    soundBackground.volume = 0.5;
-    soundBackground.loop = true;
-};
+// window.onload = function () {
+//     soundBackground.play();
+//     soundBackground.volume = 0.5;
+//     soundBackground.loop = true;
+// };
 
 //функция для для добавления картинов в массив игрового поля...
 function createBlockCanvas() {
@@ -181,8 +181,8 @@ let grinches = [
   new Grinch('grinch_two', 118, 300),
   new Grinch('grinch_three', 134, 350),
   new Grinch('grinch_four', 135, 400),
-  new Grinch('grinch_five', 151, 450),
-  new Grinch('grinch_six', 154, 500),
+  // new Grinch('grinch_five', 151, 450),
+  // new Grinch('grinch_six', 154, 500),
 ];
 
 grinches.forEach((grinch) => {

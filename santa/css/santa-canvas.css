@@ -36,7 +36,7 @@ body{
 }
 .santa_eat{
     background:url(../assets/stars_animation_3.svg);
-    animation: animstar 1s ease-in-out infinite alternate;
+    /* animation: animstar 1s ease-in-out infinite alternate; */
 }
 .santa{
     background:url(../assets/santa.svg);
@@ -66,9 +66,9 @@ body{
     background: url(../assets/grinch_cold.svg);
 }
 
-@keyframes animstar {
+/* @keyframes animstar {
     from{background:url(../assets/stars_animation_1.svg);}
     35%{background:url(../assets/stars_animation_2.svg);}
     70%{background:url(../assets/stars_animation_3.svg);}
     to{background:url(../assets/stars_animation_4.svg);}
-}
+} */
