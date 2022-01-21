@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <label
+        >brand
+        <input type="text" name="brand" />
+      </label>
+      <br />
+      <label
+        >model
+        <input type="text" name="model" />
+      </label>
+      <br />
+      <label
+        >url
+        <input type="text" name="url" />
+      </label>
+      <br />
+      <button id="btn">save</button>
+    </div>
+    <button id="update">update</button>
+
+    <script>
+        'use script'
+      let models = [];
+
+      let brand = document.querySelector("input[name=brand]");
+      let model = document.querySelector("input[name=model]");
+      let url = document.querySelector("input[name=url]");
+      let update = document.querySelector("#update");
+
+      let btn = document.querySelector("#btn");
+
+      btn.addEventListener("click", () => {
+        models.push({
+          brand: brand.value,
+          model: model.value,
+          url: url.value,
+        });
+        brand.value;
+      });
+
+      update.addEventListener("click", () => {
+          let prevModels = localStorage.getItem('models');
+
+        if (prevModels === null) {
+          localStorage.setItem("models", JSON.stringify(models));
+        } else {
+          let parsePrevModels = JSON.parse(prevModels);
+          let res = parsePrevModels.concat(models)
+          localStorage.setItem("models", JSON.stringify(res));
+        };
+      });
+
+    </script>
+  </body>
+</html>
