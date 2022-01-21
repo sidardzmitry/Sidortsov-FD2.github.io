@@ -136,7 +136,7 @@ function moveSanta(e) {
   checkForWinner();
 };
 
-document.addEventListener('keyup', moveSanta);
+document.addEventListener('keydown', moveSanta);
 
 //создаем функцию (съедая еду)...
 function eatSantaFood() {

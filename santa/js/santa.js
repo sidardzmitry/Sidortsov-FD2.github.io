@@ -16,13 +16,6 @@ btnAudioPlay.addEventListener("click", () => {
     };
 });
 
-//выключаем музыку при переходе на другую страницу...
-newGame.addEventListener('click', () => {
-  if(newGame) {
-    soundMenu.pause();
-  };
-});
-
 //глобальные переменные для модалки с рекордами...
 let modalOver = document.querySelector('.modal_over');
 let modalRecord = document.querySelector('.modal_record');
@@ -42,3 +35,26 @@ linkRecord.addEventListener('click', (e) => {
       modalOver.classList.remove('modal_overlay_visible');
     }
   });
+
+//выключаем музыку при переходе на другую страницу...
+let nameKey;
+newGame.addEventListener('click', () => {
+  if(newGame) {
+    soundMenu.pause();
+    let nameInGame = prompt('Введите свое имя?');
+    if (nameInGame === '' || nameInGame === ' ' || nameInGame === null) {
+      return nameInGame = prompt('Введите свое имя?');
+    } else {
+      nameKey += nameInGame;
+      createName();
+    };
+  };
+});
+  
+function createName() {
+  let newDiv = document.createElement('div');
+  newDiv.classList.add('newDiv');
+  newDiv.textContent = nameKey;
+  modalRecord.appendChild(newDiv);
+  localStorage.setItem('name', nameKey);
+};
