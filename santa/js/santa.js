@@ -37,7 +37,7 @@ linkRecord.addEventListener('click', (e) => {
   });
 
 //выключаем музыку при переходе на другую страницу...
-let nameKey;
+let arrRecords = [];
 newGame.addEventListener('click', () => {
   if(newGame) {
     soundMenu.pause();
@@ -45,16 +45,10 @@ newGame.addEventListener('click', () => {
     if (nameInGame === '' || nameInGame === ' ' || nameInGame === null) {
       return nameInGame = prompt('Введите свое имя?');
     } else {
-      nameKey += nameInGame;
-      createName();
+      arrRecords.push(nameInGame);
+      localStorage.setItem('Имя', nameInGame);
     };
   };
 });
-  
-function createName() {
-  let newDiv = document.createElement('div');
-  newDiv.classList.add('newDiv');
-  newDiv.textContent = nameKey;
-  modalRecord.appendChild(newDiv);
-  localStorage.setItem('name', nameKey);
-};
+
+

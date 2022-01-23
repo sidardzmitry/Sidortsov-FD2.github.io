@@ -110,11 +110,15 @@ body {
   visibility: hidden;
   transition: all 0.3s ease-in-out;
 }
-.modal_record {
-  font-size: 30px;
-  display: none;
-  border: 2px solid yellow;
-  padding: 10px;
+.table_records{
+  border: 3px solid red;
+  border-collapse: collapse;
+  text-align: center;
+  width: 500px;
+  height: auto;
+}
+.table_td_records {
+  border: 3px solid red;
 }
 .modal_overlay_visible {
   opacity: 1;
