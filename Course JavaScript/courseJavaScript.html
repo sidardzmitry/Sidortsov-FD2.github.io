@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .containerCounter{
+            width: 150px;
+            height: 100px;
+            padding: 10px;
+        }
+        .counter{
+            font-size: 50px;
+            text-align: center;
+            border: 2px solid blue;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="simple-todo">
+        <div class="tasks-wrapper">
+            <h2>Список задач</h2>
+            <ul class="todo-list">
+                <li>Посмотреть вебинар</li>
+                <li>Написать конспект</li>
+                <li>Повторить код из урока</li>
+            </ul>
+        </div>
+        <form  class="todo-form">
+            <input type="text" class="todo-input">
+            <button type="submit">Добавить задачу</button>
+        </form>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="containerCounter">
+        <div class="counter">0</div>
+        <button class="start">Start</button>
+        <button class="stop">Stop</button>
+        <button class="reset">Reset</button>
+    </div>
+    <script src="./courseJs.js"></script>
+</body>
+</html>
