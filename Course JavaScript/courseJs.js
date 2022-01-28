@@ -57,32 +57,19 @@
 
 
 //promise...
-let myPromise = new Promise((resolve, reject) => {
-    setTimeout(() => {
-        let response = true;
+// let a = 5;
 
-        if(response) {
-            let message = 'SUCCESS';
-            resolve();
-        } else {
-            let message = 'FAILED';
-            reject();
-        }
-    }, 1000)
-    console.log('Promise created');
-});
+// console.log(a)
 
-myPromise.then((data) => {
-    console.log('Then 1');
-    console.log(data)
-    return 'Data from then 1'
-}).then((data) => {
-    console.log('Then 2');
-    console.log(data);
-}).catch((data) => {
-    console.log('Catch');
-    console.log(data);
-});
+// let b = new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//         resolve(a = 20);
+//     },2000)
+// });
+
+// b.then(() => {
+//     console.log(a)
+// });
 
 
 
