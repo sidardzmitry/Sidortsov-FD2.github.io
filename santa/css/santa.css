@@ -57,7 +57,6 @@ body {
 .setting{
   padding: 5px 53px;
 }
-
 .link:hover {
   outline: none;
 }
@@ -68,7 +67,6 @@ body {
   background: url(../assets/name.svg) no-repeat;
   bottom: 10px;
   right: 45px;
-
 }
 
 /*копка off on звука*/
