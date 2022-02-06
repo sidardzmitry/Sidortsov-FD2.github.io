@@ -1,23 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./css/styles.css" />
     <link href="https://fonts.googleapis.com/css2?family=Sunshiney&display=swap" rel="stylesheet"/>
     <title>Christmas Eve</title>
-</head>
-<body>
+  </head>
+  <body>
+
     <div class="wrap">
-        <img src="/christmas eve(project)/assets/santabg.jpg" class="imgBackground" alt="This is Christmas Eve">
-        <canvas></canvas>
+      <img src="/christmas eve(project)/assets/santabg.jpg" class="imgBackground" alt="This is Christmas Eve"/>
+      <canvas class="canvas"></canvas>
     </div>
-    
+
     <!--audio files-->
     <audio src="../santa/assets/sound_menu.mp3" class="sound_menu"></audio>
+
     <!--modal records in game-->
+    <div class="modals">
+      <div class="modal modal_over">
+        <div class="modal modal_record">
+          <table class="table_records">
+            <tr class="table_tr_records">
+              <th class="table_th_records">Кол-во</th>
+              <th class="table_th_records">Имя</th>
+              <th class="table_th_records">Прогресс</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
     <!--Скрипты JS-->
     <script src="./js/main.js"></script>
-</body>
+    <script src="./js/snowcanvas.js"></script>
+  </body>
 </html>

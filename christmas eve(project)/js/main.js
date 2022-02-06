@@ -1,15 +1,9 @@
 //определяем глобальные переменные...
 const body = document.querySelector('body');
 const wrap = document.querySelector('.wrap');
-
+const soundMenu = document.querySelector('.sound_menu');
 
 //работаем с DOM деревом, добавляем блоки, классы, атрибуты, ссылки...
-//создаем аудио файл для проигрывания мелодии в меню...
-const soundMenu = document.createElement('audio');
-soundMenu.classList.add('soundMenu');
-soundMenu.src = '../assets/sound_menu.mp3';
-wrap.insertAdjacentElement('beforeend', soundMenu);
-
 //container меню...
 const containerMenu = document.createElement('div');
 containerMenu.classList.add('containerMenu');
@@ -56,6 +50,7 @@ function createBtnLinkSet() {
     btnLinkSet.appendChild(linkSet);
 };
 
+//условие при котором включается или выключаетсся музыка...
 function createBtnAudioPlay() {
     const btnAudioPlay = document.createElement('button');
     btnAudioPlay.classList.add('btnAudioPlay');
@@ -63,6 +58,7 @@ function createBtnAudioPlay() {
     btnAudioPlay.addEventListener("click", () => {
     if (soundMenu.paused) {
       soundMenu.play();
+      soundMenu.volume = 0.1;
       btnAudioPlay.classList.remove('soundOff');
       btnAudioPlay.classList.add('soundOn');
     } else {
@@ -71,7 +67,7 @@ function createBtnAudioPlay() {
       btnAudioPlay.classList.add('soundOff');
     };
 });
-}
+};
 //вызываем функции...
 createBtnLinkPlay();
 createBtnLinkRec();
@@ -80,7 +76,29 @@ createBtnAudioPlay();
 
 
 
-//условие при котором включается или выключаетсся музыка...
+//глобальные переменные для модалки с рекордами...
+let modalOver = document.querySelector('.modal_over');
+let modalRecord = document.querySelector('.modal_record');
+let linkRecord = document.querySelector('.records');
+let modals = document.querySelectorAll('.modal');
+
+//делаем небольшую модалку где будет показываться рекорды игроков...
+linkRecord.addEventListener('click', (e) => {
+    modalRecord.classList.add('modal_visible');
+    modalOver.classList.add('modal_overlay_visible');
+  });
+  
+  modalOver.addEventListener('click', (e) => {
+    //console.log(e.target);
+    if (e.target === modalOver) {
+      modalRecord.classList.remove('modal_visible');
+      modalOver.classList.remove('modal_overlay_visible');
+    }
+  });
+
+
+
+
 
 
 
