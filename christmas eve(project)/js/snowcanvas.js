@@ -1,9 +1,9 @@
 // window.onload = function () {
-    const canvas = document.querySelector("canvas");
-    const ctx = canvas.getContext("2d");
+    let canvas = document.querySelector("canvas");
+    let ctx = canvas.getContext("2d");
     //размеры canvas...
-    const width = window.innerWidth;
-    const height = window.innerHeight;
+    let width = window.innerWidth;
+    let height = window.innerHeight;
     canvas.width = width;
     canvas.height = height;
   
@@ -98,3 +98,5 @@
     //цикл анимации...
     setInterval(draw, 25);
   // };
+
+

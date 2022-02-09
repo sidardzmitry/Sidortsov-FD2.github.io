@@ -1,0 +1,121 @@
+* {
+    padding: 0;
+    margin: 0;
+    background: #000000;
+}
+#wrap {
+    width: 250px;
+    height: 250px;
+    position: absolute;
+    top: 25%;
+    left: 40%;
+    margin: -125px 0 0 -125px;
+} 
+.btn {
+    width: 140px;
+    font-size: 40px;
+    color: orange;
+    position: absolute;
+    left: 180px;
+    top: 60%;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+}
+.rules {
+    top: 80%;
+}
+.score {
+    top: 100%;
+}
+.rule {
+    color: orange;
+    position: absolute;
+    left: 50px;
+    top: 60%;
+    background: transparent;
+    font-size: 20px;
+    font-family: Arial;
+    text-align: center;
+    width: 400px;
+    display: flex;
+}
+.returnFromRule{
+    top: 150%;
+}
+.inputName{
+    position: absolute;
+    color: orange;
+    background-color: transparent;
+    top: 110%;
+    left: 38%;
+    font-size: 30px;
+    text-align: center;
+}
+.inputName::placeholder{
+    color: whitesmoke;
+    opacity: 0.1;
+}
+.btnSave{
+    width: 180px;
+    font-size: 30px;
+    color: red;
+    position: absolute;
+    left: 160px;
+    top: 135%;
+    background-color: Transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-align: center;
+}
+.btnSaveShow{
+    display: inline;
+}
+.resultStyle {
+    left: 60%;
+    position: absolute;
+    top: 70%;
+    color: orange;
+    background-color: transparent;
+}
+.resultFlex {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+    background-color: transparent;
+}
+.headResult {
+    position: absolute;
+    color: orange;
+    background-color: transparent;
+    top: 55%;
+    left: 84%;
+    font-size: 30px;
+}
+.gameover{
+    position: absolute;
+    color: red;
+    background-color: transparent;
+    top: 65%;
+    left: 44%;
+    font-size: 55px;
+    width: 300px;
+    font-family: arial;
+}
+@media screen and (max-width: 700px) {
+#wrap {
+    top: 25%;
+    left: 30%;
+}
+}
+@media screen and (max-width: 550px) {
+#wrap {
+    top: 25%;
+    left: 25%;
+}
+}

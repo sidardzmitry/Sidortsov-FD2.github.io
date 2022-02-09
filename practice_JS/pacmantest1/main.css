@@ -1,0 +1,170 @@
+html {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  *, *:before, *:after {
+    -webkit-box-sizing: inherit;
+    -moz-box-sizing: inherit;
+    box-sizing: inherit;
+    }
+  body{
+    background: url('img/santabg.jpg');
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .intro{
+    width: 800px;
+    background: black;
+    color: yellow;
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    outline: 10px double yellow;
+  }
+  .intro ul{
+    list-style: none;
+  }
+  .keys{
+    width: 70px;
+    height: 70px;
+  }
+  .start{
+    width: 80px;
+    height: 40px;
+    margin: 20px 0;
+    font-size: 20px;
+    color: yellow;
+    background-color: black;
+    outline: 7px double white;
+  }
+  .start:hover{
+    outline: 7px double yellow;
+    color: white;
+    cursor: pointer;
+  }
+  #myCanvas{
+    color: black;
+    display: none;
+    outline: 10px double yellow;
+  }
+  #paused{
+    color: white;
+    position: absolute;
+    display: none;
+  }
+  .playAgain{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #retry{
+    display: none;
+    text-align: center;
+    width: 120px;
+    height: 50px;
+    margin: 10px;
+    font-size: 20px;
+    color: yellow;
+    background-color: black;
+    outline: 7px double white;
+  }
+  #retry:hover{
+    outline: 7px double yellow;
+    color: white;
+    cursor: pointer;
+  }
+  
+  #quit{
+    display: none;
+    text-align: center;
+    width: 120px;
+    height: 50px;
+    margin: 10px;
+    font-size: 20px;
+    color: yellow;
+    background-color: black;
+    outline: 7px double white;
+  }
+  #quit:hover{
+    outline: 7px double yellow;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .mainFoot{
+    max-width: 800px;
+    height: 100px;
+    margin: 0 auto;
+    margin-top: 20px;
+    background: black;
+    color: yellow;
+    outline: 10px double yellow;
+  }
+  
+  .social{
+    display: flex;
+    flex-direction: row-reverse;
+    height: 60px;
+  }
+  .social span{
+    font-size: 20px;
+    font-weight: bolder;
+    margin-top: 40px;
+    margin-right: 430px;
+  }
+  .social a{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    text-indent: -9999px;
+    margin-top: 40px;
+    margin-right: 15px;
+  
+  }
+  .social .linked{
+    background: url(img/linked.png);
+    background-size: cover;
+  }
+  .social .git{
+    background: url(img/github.png);
+    background-size: cover;
+  }
+  .social a:hover{
+    -webkit-animation: rotation 1s 1 linear;
+  }
+  /*--helper--*/
+  @-webkit-keyframes rotation {
+          from {
+                  -webkit-transform: rotate(0deg);
+          }
+          to {
+                  -webkit-transform: rotate(180deg);
+          }
+  }
+  
+  @media screen and (max-height: 777px) {
+    .mainFoot{
+      height: 70px;
+    }
+  
+    .social span {
+      font-size: 15px;
+      margin-top: 30px;
+      margin-right: 500px;
+    }
+    .social a {
+      width: 30px;
+      height: 30px;
+      margin-top: 25px;
+    }
+  }
