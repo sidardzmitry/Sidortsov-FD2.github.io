@@ -54,7 +54,7 @@ let enemy = {
   y: 200,
   dirx: 0,
   diry: 0,
-  speed: 4,
+  speed: 3,
   moving: 0,
   flash: 0,
   ghosteat: false,
@@ -65,7 +65,7 @@ let enemy2 = {
   y: 200,
   dirx: 0,
   diry: 0,
-  speed: 4,
+  speed: 3,
   moving: 0,
   flash: 0,
   ghosteat: false,
@@ -131,7 +131,7 @@ function startGame() {
   mainImage = new Image();
   mainImage.ready = false;
   mainImage.onload = checkReady;
-  mainImage.src = "img/pacman.png";
+  mainImage.src = "img/pacman4.png";
 
 //   audio = new Audio();
 //   audio.src = "img/oforia.mp3";

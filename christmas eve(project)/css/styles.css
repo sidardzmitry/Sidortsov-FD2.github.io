@@ -23,7 +23,7 @@ body {
   position: absolute;
   display: none;
   left: 5%;
-  top: 5%;
+  top: 2%;
   /* outline: 10px double white; */
   z-index: 0;
 }
