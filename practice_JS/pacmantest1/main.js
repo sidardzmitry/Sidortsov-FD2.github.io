@@ -191,7 +191,7 @@ function myNum(n) {
 }
 
 function render() {
-  ctx.fillStyle = "black";
+  ctx.fillStyle = "blue";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   if (!pill.powerup && pill.pcountdown < 5) {

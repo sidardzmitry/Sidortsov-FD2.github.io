@@ -74,21 +74,19 @@ btnLinkRec.addEventListener('click', (e) => {
   });
 
 // window.onload = function () {
-  let canvas = document.querySelector("canvas");
-  let ctx = canvas.getContext("2d");
+  let canvasSnow = document.querySelector('.canvas');
+  let ctxSnow = canvasSnow.getContext("2d");
   //размеры canvas...
-  let width = window.innerWidth;
-  let height = window.innerHeight;
-  canvas.width = width;
-  canvas.height = height;
+  canvasSnow.width = window.innerWidth;
+  canvasSnow.height = window.innerHeight;
 
   //снежинки...
   const maxNumSnowflakes = 150; //max кол-во снежинок...
   const arrParticles = [];
   for (let i = 0; i < maxNumSnowflakes; i++) {
     arrParticles.push({
-      x: Math.random() * width, //x-координаты...
-      y: Math.random() * height, //y-координаты...
+      x: Math.random() * canvasSnow.width, //x-координаты...
+      y: Math.random() * canvasSnow.height, //y-координаты...
       r: Math.random() * 6 + 1, //радиус...
       d: Math.random() * maxNumSnowflakes, //плотность...
     });
@@ -96,25 +94,25 @@ btnLinkRec.addEventListener('click', (e) => {
 
   //рисуем хлопья...
   function draw() {
-    ctx.clearRect(0, 0, width, height);
+    ctxSnow.clearRect(0, 0, canvasSnow.width, canvasSnow.height);
 
-    ctx.fillStyle = "rgb(255, 255, 255)";
-    ctx.beginPath();
+    ctxSnow.fillStyle = "rgb(255, 255, 255)";
+    ctxSnow.beginPath();
     for (let i = 0; i < maxNumSnowflakes; i++) {
       let smallParticles = arrParticles[i];
-      ctx.moveTo(smallParticles.x, smallParticles.y);
-      ctx.arc(smallParticles.x,smallParticles.y,smallParticles.r,0,Math.PI * 2,true);
+      ctxSnow.moveTo(smallParticles.x, smallParticles.y);
+      ctxSnow.arc(smallParticles.x,smallParticles.y,smallParticles.r,0,Math.PI * 2,true);
     };
-    ctx.fill();
+    ctxSnow.fill();
     update();
     drawName();
   };
 
   //функция отрисовываем название игры...
   function drawName() {
-    ctx.fillStyle = "#FFFFE5";
-    ctx.font = "110px sunshiney";
-    ctx.fillText("Christma’s Eve",canvas.width / 2 + 50,canvas.height / 2 + 230);
+    ctxSnow.fillStyle = "#FFFFE5";
+    ctxSnow.font = "110px sunshiney";
+    ctxSnow.fillText("Christma’s Eve",canvasSnow.width / 2 + 50,canvasSnow.height / 2 + 230);
   };
   drawName();
   //функция перемещения снежинок...
@@ -134,14 +132,14 @@ btnLinkRec.addEventListener('click', (e) => {
       //Отправляем хлопья обратно сверху, когда он выходит...
       //Давайте сделаем это немного более органичным и позволим хлопьям входить слева и справа также...
       if (
-        smallParticles.x > width + 5 ||
+        smallParticles.x > canvasSnow.width + 5 ||
         smallParticles.x < -5 ||
-        smallParticles.y > height
+        smallParticles.y > canvasSnow.height
       ) {
         if (i % 3 > 0) {
           //66,67% хлопьев...
           arrParticles[i] = {
-            x: Math.random() * width,
+            x: Math.random() * canvasSnow.width,
             y: -10,
             r: smallParticles.r,
             d: smallParticles.d,
@@ -152,15 +150,15 @@ btnLinkRec.addEventListener('click', (e) => {
             //Вход слева...
             arrParticles[i] = {
               x: -5,
-              y: Math.random() * height,
+              y: Math.random() * canvasSnow.height,
               r: smallParticles.r,
               d: smallParticles.d,
             };
           } else {
             //Вход справа...
             arrParticles[i] = {
-              x: width + 5,
-              y: Math.random() * height,
+              x: canvasSnow.width + 5,
+              y: Math.random() * canvasSnow.height,
               r: smallParticles.r,
               d: smallParticles.d,
             };
@@ -174,6 +172,9 @@ btnLinkRec.addEventListener('click', (e) => {
   setInterval(draw, 25);
 // };
 
+
+  let canvas = document.querySelector('#myCanvas');
+  let ctx = canvas.getContext('2d');
   let score = 0;
   let ghostScore = 0;
   let ghost = false;
@@ -277,13 +278,324 @@ btnLinkRec.addEventListener('click', (e) => {
     if (player.pacMouth == 320) {
       player.pacMouth = 352;
     }else{player.pacMouth = 320;}
-  
+
     render();
-  }
+  };
 
   function startGame() {
     containerMenu.style.display = 'none';
+    canvasSnow.style.display = 'none';
+    canvas.style.display = 'block';
+    mainImage = new Image();
+    mainImage.ready = false;
+    mainImage.onload = checkReady;
+    mainImage.src = '../img/pac.png';
+
+    // audio = new Audio();
+    // audio.src = "../img/oforia.mp3";
+    // audio.volume = 0.1;
+    // audio.loop = 1;
+    // audio.play();
+    // win = new Audio();
+    // win.src = "../img/wohoo.wav";
+    // win.volume = 0.3;
+    // lose = new Audio();
+    // lose.src = "../img/doh.wav";
+    // lose.volume = 0.3;
+  };
+
+  //функция для повторной игры...
+  function playAgain() {
+    retry.style.display = "none";
+    quit.style.display = "none";
+    footer.style.display = "none";
+    player.speed = 11;
+    score = 0;
+    ghostScore = 0;
   }
+
+  //функция для паузы в игре...
+  function pauseGame () {
+    if (!gamePaused) {
+        player.speed = 0;
+        enemy.speed = 0;
+        enemy2.speed = 0;
+        canvas.style.opacity = "0.8";
+        paused.style.display = "block";
+        gamePaused = true;
+      } else if (gamePaused) {
+        player.speed = 10;
+        enemy.speed = myNum(5)-1;
+        enemy2.speed = myNum(5)-1;
+        canvas.style.opacity = "1";
+        paused.style.display = "none";
+        gamePaused = false;
+      }
+  }
+
+  //функция для прекращения игры...
+  function quitGame () {
+    audio.pause();
+    // mainImage.src = "";
+    intro.style.display = "block";
+    footer.style.display = "block";
+    canvas.style.display = "none";
+    retry.style.display = "none";
+    quit.style.display = "none";
+    score = 0;
+    ghostScore = 0;
+  }
+
+  //проверяем готовность...
+  function checkReady() {
+    this.ready = true;
+    playGame();
+  }
+
+  //запускаем функции для игры отрисовки игры...
+  function playGame() {
+    render();
+    requestAnimationFrame(playGame);
+  }
+
+  function myNum(n) {
+    return Math.floor(Math.random() * n);
+  }
+
+  //рендерим всю игру (поле и игроков)...
+  function render() {
+    ctx.fillStyle = "black";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+    if (!pill.powerup && pill.pcountdown < 5) {
+      pill.x = myNum(600)+30;
+      pill.y = myNum(550);
+      pill.powerup = true;
+    }
+  
+    if (!ghost) {
+        enemy.ghostNum =  myNum(5) * 64;
+        enemy.x = myNum(750);
+        enemy.y = myNum(250) +30;
+        ghost = true;
+    }
+  
+    if (!ghost2) {
+        enemy2.ghostNum =  myNum(5) * 64;
+        enemy2.x = myNum(750);
+        enemy2.y = myNum(250) +30;
+        ghost2 = true;
+    }
+  
+    if (enemy.moving < 0) {
+    enemy.moving = (myNum(20) * 3)+10 + myNum(2);
+    // enemy.speed = myNum(5);
+    enemy.dirx = 0;
+    enemy.diry = 0;
+    if (pill.ghosteat) {
+      enemy.speed = enemy.speed *-1;
+    }
+    if (enemy.moving % 2) {
+      if (player.x < enemy.x) {
+        enemy.dirx = -enemy.speed;
+      }else{
+        enemy.dirx = enemy.speed;
+      }
+    }else{
+      if (player.y < enemy.y) {
+        enemy.diry = -enemy.speed;
+      }else{
+        enemy.diry = enemy.speed;
+    }
+  }
+  }
+  
+    enemy.moving--;
+    enemy.x = enemy.x + enemy.dirx;
+    enemy.y = enemy.y + enemy.diry;
+  
+    if (enemy.x >= (canvas.width - 32)) {
+      enemy.x = 0;
+    }
+    if (enemy.y >= (canvas.height - 32)) {
+      enemy.y = 0;
+    }
+    if (enemy.x < 0) {
+      enemy.x = canvas.width - 32;
+    }
+    if (enemy.y < 0) {
+      enemy.y = canvas.height - 32;
+    }
+  
+    if (enemy2.moving < 0) {
+    enemy2.moving = (myNum(20) * 3)+10 + myNum(2);
+    // enemy2.speed = myNum(5);
+    enemy2.dirx = 0;
+    enemy2.diry = 0;
+    if (pill.ghosteat) {
+      enemy2.speed = enemy2.speed *-1;
+    }
+    if (enemy2.moving % 2) {
+      if (player.x < enemy2.x) {
+        enemy2.dirx = -enemy2.speed;
+      }else{
+        enemy2.dirx = enemy2.speed;
+      }
+    }else{
+      if (player.y < enemy2.y) {
+        enemy2.diry = -enemy2.speed;
+      }else{
+        enemy2.diry = enemy2.speed;
+    }
+  }
+  }
+  
+    enemy2.moving--;
+    enemy2.x = enemy2.x + enemy2.dirx;
+    enemy2.y = enemy2.y + enemy2.diry;
+  
+    if (enemy2.x >= (canvas.width - 32)) {
+      enemy2.x = 0;
+    }
+    if (enemy2.y >= (canvas.height - 32)) {
+      enemy2.y = 0;
+    }
+    if (enemy2.x < 0) {
+      enemy2.x = canvas.width - 32;
+    }
+    if (enemy2.y < 0) {
+      enemy2.y = canvas.height - 32;
+    }
+    //Collision detection ghost
+  
+    if (player.x <= (enemy.x+26) && enemy.x <=(player.x+26) && player.y <= (enemy.y+26) && enemy.y <=(player.y+32) ) {
+      if (enemy.ghosteat) {
+        score++;
+        win.play();
+      }else {
+        ghostScore++;
+        // lose.play();
+      }
+      player.x = 10;
+      player.y = 100;
+      enemy.x = 600;
+      enemy.y = 400;
+      pill.pcountdown = 0;
+    }
+  
+    if (player.x <= (enemy2.x+26) && enemy2.x <=(player.x+26) && player.y <= (enemy2.y+26) && enemy2.y <=(player.y+32) ) {
+      if (enemy2.ghosteat) {
+        score++;
+        win.play();
+      }else {
+        ghostScore++;
+        // lose.play();
+      }
+      player.x = 10;
+      player.y = 100;
+      enemy2.x = 600;
+      enemy2.y = 400;
+      pill.pcountdown = 0;
+    }
+    //Collision detection pill
+  
+    if (player.x <= pill.x && pill.x <=(player.x+32) && player.y <= pill.y && pill.y <=(player.y+32) ) {
+        pill.powerup = false;
+        pill.pcountdown = 500;
+        pill.ghostNum = enemy.ghostNum;
+        pill.ghostNum2 = enemy2.ghostNum;
+        enemy.ghostNum = 384;
+        enemy2.ghostNum = 384;
+        pill.x = 0;
+        pill.y = 0;
+        enemy.ghosteat = true;
+        enemy2.ghosteat = true;
+    }
+  
+    if (enemy.ghosteat) {
+      pill.pcountdown--;
+      if (pill.pcountdown <= 0) {
+        enemy.ghosteat = false;
+        enemy.ghostNum = pill.ghostNum;
+      }
+    }
+  
+    if (enemy2.ghosteat) {
+      pill.pcountdown--;
+      if (pill.pcountdown <= 0) {
+        enemy2.ghosteat = false;
+        enemy2.ghostNum = pill.ghostNum;
+      }
+    }
+  
+    if (pill.powerup) {
+      ctx.fillStyle = "tomato";
+      ctx.beginPath();
+      ctx.arc(pill.x,pill.y, 12, 0, Math.PI * 2, true);
+      ctx.closePath();
+      ctx.fill();
+    }
+  
+  
+    if (enemy.flash == 0) {
+      enemy.flash = 32;
+      enemy2.flash = 32;
+    }else {
+      enemy.flash = 0;
+      enemy2.flash = 0;
+    }
+  
+    if (countblink>10) {
+      countblink--;
+    }else{
+      countblink = 10;
+    }
+  
+  
+    if (score == 5) {
+      ctx.font = "100px Verdana";
+      ctx.fillStyle = "green";
+      ctx.fillText(`YOU WIN`, 150, 350);
+      enemy.x = 750;
+      enemy.y = 100;
+      enemy2.x = 750;
+      enemy2.y = 500;
+      player.speed = 0;
+      retry.style.display = "block";
+      quit.style.display = "block";
+      footer.style.display = "none";
+    }
+    if (ghostScore == 5) {
+      ctx.font = "100px Verdana";
+      ctx.fillStyle = "red";
+      ctx.fillText(`YOU LOSE`, 150, 350);
+      enemy.x = 750;
+      enemy.y = 100;
+      enemy2.x = 750;
+      enemy2.y = 500;
+      player.speed = 0;
+      retry.style.display = "block";
+      quit.style.display = "block";
+      footer.style.display = "none"; 
+    }
+  
+    ctx.font = "20px Verdana";
+    ctx.fillStyle = "green";
+    ctx.fillText(`Pacman ${score} : ${ghostScore} Ghost`, 2, 18);
+  
+    ctx.font = "20px Verdana";
+    let gradient = ctx.createLinearGradient(435, 18, 800, 18);
+    gradient.addColorStop(0, "rgb(255, 0, 0)");
+    gradient.addColorStop(1, "rgb(255, 255, 0)");
+    ctx.fillStyle = gradient;
+    ctx.fillText(`My Name`,435, 18);
+
+
+    ctx.drawImage(mainImage, enemy.ghostNum, enemy.flash, 32, 32, enemy.x, enemy.y, 50, 50);
+    ctx.drawImage(mainImage, enemy2.ghostNum, enemy2.flash, 32, 32, enemy2.x, enemy2.y, 50, 50);
+    ctx.drawImage(mainImage, player.pacMouth, player.pacDir, 32, 32, player.x, player.y, 50, 50);
+  };
+
 
 
 
