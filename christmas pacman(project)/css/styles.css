@@ -82,7 +82,7 @@ body {
 .records {
   padding: 5px 51px;
 }
-.setting {
+.rules {
   padding: 5px 53px;
 }
 .link:hover {
@@ -136,9 +136,20 @@ body {
   text-align: center;
   width: 500px;
   height: auto;
+  display: none;
 }
 .table_td_records {
   border: 3px solid red;
+}
+.blockRules{
+  text-align: center;
+  display: flex;
+  width: 400px;
+  font-size: 25px;
+  color: #FCF6D6;
+  font-family: Arial;
+  background: transparent;
+  display: none;
 }
 .modal_overlay_visible {
   opacity: 1;

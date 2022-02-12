@@ -1,3 +1,4 @@
+'use strict';
 //определяем глобальные переменные...
 const body = document.querySelector("body");
 const wrap = document.querySelector(".wrap");
@@ -28,10 +29,10 @@ btnLinkRec.classList.add("btnLink", "records");
 blockLinks.insertAdjacentElement("beforeend", btnLinkRec);
 btnLinkRec.textContent = "Records";
 
-const btnLinkSet = document.createElement("button");
-btnLinkSet.classList.add("btnLink", "setting");
-blockLinks.insertAdjacentElement("beforeend", btnLinkSet);
-btnLinkSet.textContent = "Setting";
+const btnLinkRul = document.createElement("button");
+btnLinkRul.classList.add("btnLink", "rules");
+blockLinks.insertAdjacentElement("beforeend", btnLinkRul);
+btnLinkRul.textContent = "Rules";
 
 //условие при котором включается или выключаетсся музыка...
 function createBtnAudioPlay() {
@@ -60,9 +61,14 @@ let modalRecord = document.querySelector(".modal_record");
 let modals = document.querySelectorAll(".modal");
 
 //делаем небольшую модалку где будет показываться рекорды игроков...
+let tableRecords = document.querySelector('.table_records');
+let blockRules = document.querySelector('.blockRules');
+
 btnLinkRec.addEventListener("click", (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
+  tableRecords.style.display = 'block';
+  blockRules.style.display = 'none';
 });
 
 modalOver.addEventListener("click", (e) => {
@@ -71,6 +77,13 @@ modalOver.addEventListener("click", (e) => {
     modalRecord.classList.remove("modal_visible");
     modalOver.classList.remove("modal_overlay_visible");
   }
+});
+
+btnLinkRul.addEventListener('click', (e) => {
+  modalRecord.classList.add("modal_visible");
+  modalOver.classList.add("modal_overlay_visible");
+  tableRecords.style.display = 'none';
+  blockRules.style.display = 'block';
 });
 
 // window.onload = function () {
@@ -117,12 +130,12 @@ function draw() {
 
 //функция отрисовываем название игры...
 function drawName() {
-  ctxSnow.fillStyle = "#FFFFE5";
-  ctxSnow.font = "150px sunshiney";
+  ctxSnow.fillStyle = "rgb(252,246,214)";
+  ctxSnow.font = "130px sunshiney";
   ctxSnow.fillText(
-    "Christma’s Eve",
+    "Christma’s Pacman",
     500,
-    canvasSnow.height / 2 + 240
+    canvasSnow.height / 2 + 235
   );
 };
 drawName();
@@ -191,5 +204,5 @@ window.addEventListener('beforeunload', (event) => {
 });
 
 //экспортируем в другой файл...
-export { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap };
+export { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, btnLinkRec };
 

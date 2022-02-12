@@ -1,13 +1,20 @@
+'use strict';
 //импорт переменных, для работы с новом файле...
-import { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, } from "./main.js";
+import {
+  btnLinkPlay,
+  containerMenu,
+  canvasSnow,
+  soundMenu,
+  wrap,
+} from "./main.js";
 
 //обьявление глобальных переменных...
-let canvas = document.querySelector("#myCanvas");
-let ctx = canvas.getContext("2d");
+let canvas = document.querySelector('#myCanvas');
+let ctx = canvas.getContext('2d');
 let score = 0;
-let ghostScore = 0;
-let ghost = false;
-let ghost2 = false;
+let grinchScore = 0;
+let grinch = false;
+let grinch2 = false;
 let countblink = 10;
 let arrKeyCode = {};
 let gamePaused = false;
@@ -20,20 +27,19 @@ let lose = document.querySelector('.doh');
 let imgBackground = document.querySelector('.imgBackground');
 let imgNew = document.querySelector('.imgNew');
 
-
 //создаем две кнопки для обновления игры и выхода...
 let blockBtn = document.createElement('div');
 blockBtn.classList.add('blockBtn');
-wrap.insertAdjacentElement('beforeend',blockBtn);
+wrap.insertAdjacentElement('beforeend', blockBtn);
 
 let retry = document.createElement('button');
-retry.classList.add("btnLink", 'retry');
+retry.classList.add('btnLink', 'retry');
 retry.textContent = 'Try Again';
 retry.setAttribute('type', 'button');
 blockBtn.insertAdjacentElement('afterbegin', retry);
 
 let quit = document.createElement('button');
-quit.classList.add("btnLink", 'quit');
+quit.classList.add('btnLink', 'quit');
 quit.textContent = 'Quit';
 quit.setAttribute('type', 'button');
 blockBtn.insertAdjacentElement('beforeend', quit);
@@ -44,25 +50,19 @@ messagePause.classList.add('pause');
 messagePause.textContent = 'Game paused.Press enter to unpause';
 wrap.insertAdjacentElement('beforeend', messagePause);
 
-
-
-btnLinkPlay.addEventListener("click", startGame);
+btnLinkPlay.addEventListener('click', startGame);
 retry.addEventListener('click', playAgain);
 quit.addEventListener('click', quitGame);
 
-document.addEventListener(
-  "keydown",
-  function (event) {
-    arrKeyCode[event.keyCode] = true;
+document.addEventListener('keydown', (e) => {
+    arrKeyCode[e.code] = true;
     move(arrKeyCode);
   },
   false
 );
 
-document.addEventListener(
-  "keyup",
-  function (event) {
-    delete arrKeyCode[event.keyCode];
+document.addEventListener('keyup', (e) => {
+    delete arrKeyCode[e.code];
   },
   false
 );
@@ -84,7 +84,7 @@ let enemy = {
   speed: 3,
   moving: 0,
   flash: 0,
-  ghosteat: false,
+  grincheat: false,
 };
 
 let enemy2 = {
@@ -95,7 +95,7 @@ let enemy2 = {
   speed: 3,
   moving: 0,
   flash: 0,
-  ghosteat: false,
+  grincheat: false,
 };
 
 let pill = {
@@ -103,29 +103,29 @@ let pill = {
   y: 10,
   powerup: false,
   pcountdown: 0,
-  ghostNum: 0,
-  ghostNum2: 0,
+  grinchNum: 0,
+  grinchNum2: 0,
 };
 
 function move(arrKeyCode) {
-  if (37 in arrKeyCode) {
+  if ('ArrowLeft' in arrKeyCode) {
     player.x -= player.speed;
     player.pacDir = 64;
   }
-  if (38 in arrKeyCode) {
+  if ('ArrowUp' in arrKeyCode) {
     player.y -= player.speed;
     player.pacDir = 96;
   }
-  if (39 in arrKeyCode) {
+  if ('ArrowRight' in arrKeyCode) {
     player.x += player.speed;
     player.pacDir = 0;
   }
-  if (40 in arrKeyCode) {
+  if ('ArrowDown' in arrKeyCode) {
     player.y += player.speed;
     player.pacDir = 32;
   }
 
-  if (13 in arrKeyCode) {
+  if ('Enter' in arrKeyCode) {
     pauseGame();
   }
 
@@ -152,10 +152,10 @@ function move(arrKeyCode) {
 
 function startGame() {
   containerMenu.style.display = "none";
-  imgBackground.style.display = 'none';
-  imgNew.style.display = 'block';
+  imgBackground.style.display = "none";
+  imgNew.style.display = "block";
   canvas.style.display = "block";
-  soundMenu.pause();//выключаем музыку из меню...
+  soundMenu.pause(); //выключаем музыку из меню...
   mainImage = new Image();
   mainImage.ready = false;
   mainImage.onload = checkReady;
@@ -179,7 +179,7 @@ function playAgain() {
   blockBtn.style.display = "none";
   player.speed = 11;
   score = 0;
-  ghostScore = 0;
+  grinchScore = 0;
 }
 
 //функция для паузы в игре...
@@ -206,13 +206,13 @@ function quitGame() {
   audio.pause();
   mainImage.src = "";
   canvasSnow.style.display = "block";
-  containerMenu.style.display = 'block';
+  containerMenu.style.display = "block";
   canvas.style.display = "none";
   blockBtn.style.display = "none";
-  imgBackground.style.display = 'block';
-  imgNew.style.display = 'none';
+  imgBackground.style.display = "block";
+  imgNew.style.display = "none";
   score = 0;
-  ghostScore = 0;
+  grinchScore = 0;
 }
 
 //проверяем готовность...
@@ -235,8 +235,9 @@ function myNum(n) {
 function render() {
   ctx.fillStyle = "rgb(3,38,81)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.strokeStyle = 'white';
-  ctx.lineWidth = 6;
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = 3;
+  ctx.lineJoin = 'round';
   ctx.strokeRect(0, 0, canvas.width, canvas.height);
   if (!pill.powerup && pill.pcountdown < 5) {
     pill.x = myNum(600) + 30;
@@ -244,18 +245,18 @@ function render() {
     pill.powerup = true;
   }
 
-  if (!ghost) {
-    enemy.ghostNum = myNum(5) * 64;
+  if (!grinch) {
+    enemy.grinchNum = myNum(5) * 64;
     enemy.x = myNum(750);
     enemy.y = myNum(250) + 30;
-    ghost = true;
+    grinch = true;
   }
 
-  if (!ghost2) {
-    enemy2.ghostNum = myNum(5) * 64;
+  if (!grinch2) {
+    enemy2.grinchNum = myNum(5) * 64;
     enemy2.x = myNum(750);
     enemy2.y = myNum(250) + 30;
-    ghost2 = true;
+    grinch2 = true;
   }
 
   if (enemy.moving < 0) {
@@ -263,7 +264,7 @@ function render() {
     // enemy.speed = myNum(5);
     enemy.dirx = 0;
     enemy.diry = 0;
-    if (pill.ghosteat) {
+    if (pill.grincheat) {
       enemy.speed = enemy.speed * -1;
     }
     if (enemy.moving % 2) {
@@ -303,7 +304,7 @@ function render() {
     // enemy2.speed = myNum(5);
     enemy2.dirx = 0;
     enemy2.diry = 0;
-    if (pill.ghosteat) {
+    if (pill.grincheat) {
       enemy2.speed = enemy2.speed * -1;
     }
     if (enemy2.moving % 2) {
@@ -337,7 +338,7 @@ function render() {
   if (enemy2.y < 0) {
     enemy2.y = canvas.height - 32;
   }
-  //Collision detection ghost
+  //Collision detection grinch
 
   if (
     player.x <= enemy.x + 26 &&
@@ -345,11 +346,11 @@ function render() {
     player.y <= enemy.y + 26 &&
     enemy.y <= player.y + 32
   ) {
-    if (enemy.ghosteat) {
+    if (enemy.grincheat) {
       score++;
       win.play();
     } else {
-      ghostScore++;
+      grinchScore++;
       lose.play();
     }
     player.x = 10;
@@ -365,11 +366,11 @@ function render() {
     player.y <= enemy2.y + 26 &&
     enemy2.y <= player.y + 32
   ) {
-    if (enemy2.ghosteat) {
+    if (enemy2.grincheat) {
       score++;
       win.play();
     } else {
-      ghostScore++;
+      grinchScore++;
       lose.play();
     }
     player.x = 10;
@@ -388,29 +389,29 @@ function render() {
   ) {
     pill.powerup = false;
     pill.pcountdown = 500;
-    pill.ghostNum = enemy.ghostNum;
-    pill.ghostNum2 = enemy2.ghostNum;
-    enemy.ghostNum = 384;
-    enemy2.ghostNum = 384;
+    pill.grinchNum = enemy.grinchNum;
+    pill.grinchNum2 = enemy2.grinchNum;
+    enemy.grinchNum = 384;
+    enemy2.grinchNum = 384;
     pill.x = 0;
     pill.y = 0;
-    enemy.ghosteat = true;
-    enemy2.ghosteat = true;
+    enemy.grincheat = true;
+    enemy2.grincheat = true;
   }
 
-  if (enemy.ghosteat) {
+  if (enemy.grincheat) {
     pill.pcountdown--;
     if (pill.pcountdown <= 0) {
-      enemy.ghosteat = false;
-      enemy.ghostNum = pill.ghostNum;
+      enemy.grincheat = false;
+      enemy.grinchNum = pill.grinchNum;
     }
   }
 
-  if (enemy2.ghosteat) {
+  if (enemy2.grincheat) {
     pill.pcountdown--;
     if (pill.pcountdown <= 0) {
-      enemy2.ghosteat = false;
-      enemy2.ghostNum = pill.ghostNum;
+      enemy2.grincheat = false;
+      enemy2.grinchNum = pill.grinchNum;
     }
   }
 
@@ -477,7 +478,7 @@ function render() {
     player.speed = 0;
     blockBtn.style.display = "flex";
   }
-  if (ghostScore == 1) {
+  if (grinchScore == 1) {
     ctx.font = "100px Sunshiney";
     ctx.fillStyle = "red";
     ctx.fillText(`Game Over`, 220, 250);
@@ -491,15 +492,15 @@ function render() {
 
   ctx.font = "30px Sunshiney";
   ctx.fillStyle = "white";
-  ctx.fillText(`Pacman ${score} : ${ghostScore} Ghost`, 290, 30);
+  ctx.fillText(`Pacman ${score} : ${grinchScore} grinch`, 290, 30);
 
   ctx.font = "15px Sunshiney";
-  ctx.fillStyle = 'white';
+  ctx.fillStyle = "white";
   ctx.fillText(`2022 Sodortsov D. All rights reserved`, 590, 540);
 
-      ctx.drawImage(
+  ctx.drawImage(
     mainImage,
-    enemy.ghostNum,
+    enemy.grinchNum,
     enemy.flash,
     32,
     32,
@@ -510,7 +511,7 @@ function render() {
   );
   ctx.drawImage(
     mainImage,
-    enemy2.ghostNum,
+    enemy2.grinchNum,
     enemy2.flash,
     32,
     32,
@@ -530,11 +531,10 @@ function render() {
     50,
     50
   );
-};
+}
 
 //событие на закрытие окна брайзера...
-window.addEventListener('beforeunload', (event) => {
+window.addEventListener("beforeunload", (event) => {
   event.preventDefault();
-  event.returnValue = 'Возможно внесенные изменения не сохранятся!';
+  event.returnValue = "Возможно внесенные изменения не сохранятся!";
 });
-

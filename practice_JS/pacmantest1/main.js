@@ -1,5 +1,5 @@
 let score = 0;
-let ghostScore = 0;
+let grinchScore = 0;
 let ghost = false;
 let ghost2 = false;
 let countblink = 10;
@@ -143,7 +143,7 @@ function playAgain() {
   footer.style.display = "none";
   player.speed = 11;
   score = 0;
-  ghostScore = 0;
+  grinchScore = 0;
 }
 
   function pauseGame () {
@@ -173,7 +173,7 @@ function quitGame () {
   retry.style.display = "none";
   quit.style.display = "none";
   score = 0;
-  ghostScore = 0;
+  grinchScore = 0;
 }
 
 function checkReady() {
@@ -300,7 +300,7 @@ function render() {
       score++;
       win.play();
     }else {
-      ghostScore++;
+      grinchScore++;
       lose.play();
     }
     player.x = 10;
@@ -315,7 +315,7 @@ function render() {
       score++;
       win.play();
     }else {
-      ghostScore++;
+      grinchScore++;
       lose.play();
     }
     player.x = 10;
@@ -392,7 +392,7 @@ function render() {
     quit.style.display = "block";
     footer.style.display = "none";
   }
-  if (ghostScore == 5) {
+  if (grinchScore == 5) {
     ctx.font = "100px Verdana";
     ctx.fillStyle = "red";
     ctx.fillText(`YOU LOSE`, 150, 350);
@@ -408,7 +408,7 @@ function render() {
 
   ctx.font = "20px Verdana";
   ctx.fillStyle = "white";
-  ctx.fillText(`Pacman ${score} : ${ghostScore} Ghost`, 2, 18);
+  ctx.fillText(`Pacman ${score} : ${grinchScore} Ghost`, 2, 18);
 
   ctx.font = "20px Verdana";
   let gradient = ctx.createLinearGradient(435, 18, 800, 18);
