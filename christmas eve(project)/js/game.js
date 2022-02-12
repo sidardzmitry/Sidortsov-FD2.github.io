@@ -1,6 +1,7 @@
+//импорт переменных, для работы с новом файле...
 import { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, } from "./main.js";
 
-
+//обьявление глобальных переменных...
 let canvas = document.querySelector("#myCanvas");
 let ctx = canvas.getContext("2d");
 let score = 0;
@@ -8,7 +9,7 @@ let ghostScore = 0;
 let ghost = false;
 let ghost2 = false;
 let countblink = 10;
-let keyclick = {};
+let arrKeyCode = {};
 let gamePaused = false;
 
 let mainImage = undefined;
@@ -27,17 +28,21 @@ wrap.insertAdjacentElement('beforeend',blockBtn);
 
 let retry = document.createElement('button');
 retry.classList.add("btnLink", 'retry');
-retry.textContent = 'Try Again?';
+retry.textContent = 'Try Again';
 retry.setAttribute('type', 'button');
 blockBtn.insertAdjacentElement('afterbegin', retry);
 
 let quit = document.createElement('button');
 quit.classList.add("btnLink", 'quit');
-quit.textContent = 'Quit?';
+quit.textContent = 'Quit';
 quit.setAttribute('type', 'button');
 blockBtn.insertAdjacentElement('beforeend', quit);
 
-
+//создаем уведамление при нажатии паузы...
+let messagePause = document.createElement('h1');
+messagePause.classList.add('pause');
+messagePause.textContent = 'Game paused.Press enter to unpause';
+wrap.insertAdjacentElement('beforeend', messagePause);
 
 
 
@@ -48,8 +53,8 @@ quit.addEventListener('click', quitGame);
 document.addEventListener(
   "keydown",
   function (event) {
-    keyclick[event.keyCode] = true;
-    move(keyclick);
+    arrKeyCode[event.keyCode] = true;
+    move(arrKeyCode);
   },
   false
 );
@@ -57,7 +62,7 @@ document.addEventListener(
 document.addEventListener(
   "keyup",
   function (event) {
-    delete keyclick[event.keyCode];
+    delete arrKeyCode[event.keyCode];
   },
   false
 );
@@ -102,25 +107,25 @@ let pill = {
   ghostNum2: 0,
 };
 
-function move(keyclick) {
-  if (37 in keyclick) {
+function move(arrKeyCode) {
+  if (37 in arrKeyCode) {
     player.x -= player.speed;
     player.pacDir = 64;
   }
-  if (38 in keyclick) {
+  if (38 in arrKeyCode) {
     player.y -= player.speed;
     player.pacDir = 96;
   }
-  if (39 in keyclick) {
+  if (39 in arrKeyCode) {
     player.x += player.speed;
     player.pacDir = 0;
   }
-  if (40 in keyclick) {
+  if (40 in arrKeyCode) {
     player.y += player.speed;
     player.pacDir = 32;
   }
 
-  if (13 in keyclick) {
+  if (13 in arrKeyCode) {
     pauseGame();
   }
 
@@ -184,14 +189,14 @@ function pauseGame() {
     enemy.speed = 0;
     enemy2.speed = 0;
     canvas.style.opacity = "0.8";
-    paused.style.display = "block";
+    messagePause.style.display = "block";
     gamePaused = true;
   } else if (gamePaused) {
     player.speed = 10;
     enemy.speed = myNum(5) - 1;
     enemy2.speed = myNum(5) - 1;
     canvas.style.opacity = "1";
-    paused.style.display = "none";
+    messagePause.style.display = "none";
     gamePaused = false;
   }
 }
@@ -461,10 +466,10 @@ function render() {
     countblink = 10;
   }
 
-  if (score == 5) {
+  if (score == 1) {
     ctx.font = "100px Sunshiney";
     ctx.fillStyle = "green";
-    ctx.fillText(`You Win`, 140, 250);
+    ctx.fillText(`You Win`, 250, 250);
     enemy.x = 750;
     enemy.y = 100;
     enemy2.x = 750;
@@ -472,10 +477,10 @@ function render() {
     player.speed = 0;
     blockBtn.style.display = "flex";
   }
-  if (ghostScore == 5) {
+  if (ghostScore == 1) {
     ctx.font = "100px Sunshiney";
     ctx.fillStyle = "red";
-    ctx.fillText(`Game Over`, 160, 250);
+    ctx.fillText(`Game Over`, 220, 250);
     enemy.x = 750;
     enemy.y = 100;
     enemy2.x = 750;
@@ -486,14 +491,11 @@ function render() {
 
   ctx.font = "30px Sunshiney";
   ctx.fillStyle = "white";
-  ctx.fillText(`Pacman ${score} : ${ghostScore} Ghost`, 10, 30);
+  ctx.fillText(`Pacman ${score} : ${ghostScore} Ghost`, 290, 30);
 
-  ctx.font = "30px Sunshiney";
-//   let gradient = ctx.createLinearGradient(435, 18, 800, 18);
-//   gradient.addColorStop(0, "rgb(255, 0, 0)");
-//   gradient.addColorStop(1, "rgb(255, 255, 0)");
+  ctx.font = "15px Sunshiney";
   ctx.fillStyle = 'white';
-  ctx.fillText(`Product made by Sidortsou D.`, 485, 30);
+  ctx.fillText(`2022 Sodortsov D. All rights reserved`, 590, 540);
 
       ctx.drawImage(
     mainImage,
@@ -530,6 +532,7 @@ function render() {
   );
 };
 
+//событие на закрытие окна брайзера...
 window.addEventListener('beforeunload', (event) => {
   event.preventDefault();
   event.returnValue = 'Возможно внесенные изменения не сохранятся!';

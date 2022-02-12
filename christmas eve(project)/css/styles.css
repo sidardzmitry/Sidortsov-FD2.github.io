@@ -179,3 +179,11 @@ body {
   transform: scale(1.05,1.05);
   cursor: pointer;
 }
+.pause{
+  position: absolute;
+  top: 33%;
+  left: 17%;
+  color: white;
+  font-family: Sunshiney;
+  display: none;
+}
