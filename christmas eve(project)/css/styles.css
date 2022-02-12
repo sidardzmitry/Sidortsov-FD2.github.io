@@ -151,3 +151,31 @@ body {
   align-items: center;
   margin-top: 20%;
 }
+.blockBtn{
+  position: absolute;
+  bottom: 50%;
+  left: 22%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  display: none;
+}
+.retry{
+  padding: 5px 15px;
+}
+.retry:hover{
+  background: #005684b0;
+  transition: .5s;
+  transform: scale(1.05,1.05);
+  cursor: pointer;
+}
+.quit{
+  padding: 5px 40px;
+}
+.quit:hover{
+  background: #005684b0;
+  transition: .5s;
+  transform: scale(1.05,1.05);
+  cursor: pointer;
+}

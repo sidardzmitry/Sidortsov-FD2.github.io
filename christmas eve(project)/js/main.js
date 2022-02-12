@@ -183,7 +183,14 @@ function update() {
 //цикл анимации...
 setInterval(draw, 25);
 // };
-export { btnLinkPlay, containerMenu, canvasSnow };
+
+window.addEventListener('beforeunload', (event) => {
+  event.preventDefault();
+  event.returnValue = 'Возможно внесенные изменения не сохранятся!';
+});
+
+
+export { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap };
 
 // let canvas = document.querySelector('#myCanvas');
 // let ctx = canvas.getContext('2d');

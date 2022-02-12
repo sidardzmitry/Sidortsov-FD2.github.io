@@ -1,4 +1,4 @@
-import { btnLinkPlay, containerMenu, canvasSnow } from "./main.js";
+import { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, } from "./main.js";
 
 
 let canvas = document.querySelector("#myCanvas");
@@ -19,9 +19,31 @@ let lose = document.querySelector('.doh');
 let imgBackground = document.querySelector('.imgBackground');
 let imgNew = document.querySelector('.imgNew');
 
+
+//создаем две кнопки для обновления игры и выхода...
+let blockBtn = document.createElement('div');
+blockBtn.classList.add('blockBtn');
+wrap.insertAdjacentElement('beforeend',blockBtn);
+
+let retry = document.createElement('button');
+retry.classList.add("btnLink", 'retry');
+retry.textContent = 'Try Again?';
+retry.setAttribute('type', 'button');
+blockBtn.insertAdjacentElement('afterbegin', retry);
+
+let quit = document.createElement('button');
+quit.classList.add("btnLink", 'quit');
+quit.textContent = 'Quit?';
+quit.setAttribute('type', 'button');
+blockBtn.insertAdjacentElement('beforeend', quit);
+
+
+
+
+
 btnLinkPlay.addEventListener("click", startGame);
-// retry.addEventListener('click', playAgain);
-// quit.addEventListener('click', quitGame);
+retry.addEventListener('click', playAgain);
+quit.addEventListener('click', quitGame);
 
 document.addEventListener(
   "keydown",
@@ -128,29 +150,28 @@ function startGame() {
   imgBackground.style.display = 'none';
   imgNew.style.display = 'block';
   canvas.style.display = "block";
+  soundMenu.pause();//выключаем музыку из меню...
   mainImage = new Image();
   mainImage.ready = false;
   mainImage.onload = checkReady;
-  mainImage.src = "img/pacman4.png";
+  mainImage.src = "img/pacman5.png";
 
-//   audio = new Audio();
-//   audio.src = "img/oforia.mp3";
-//   audio.volume = 0.1;
-//   audio.loop = 1;
-//   audio.play();
-//   win = new Audio();
-//   win.src = "img/wohoo.wav";
-//   win.volume = 0.3;
-//   lose = new Audio();
-//   lose.src = "img/doh.wav";
-//   lose.volume = 0.3;
+  // audio = new Audio();
+  // audio.src = "img/oforia.mp3";
+  // audio.volume = 0.1;
+  // audio.loop = 1;
+  // audio.play();
+  // win = new Audio();
+  // win.src = "img/wohoo.wav";
+  // win.volume = 0.3;
+  // lose = new Audio();
+  // lose.src = "img/doh.wav";
+  // lose.volume = 0.3;
 }
 
 //функция для повторной игры...
 function playAgain() {
-  retry.style.display = "none";
-  quit.style.display = "none";
-  footer.style.display = "none";
+  blockBtn.style.display = "none";
   player.speed = 11;
   score = 0;
   ghostScore = 0;
@@ -179,11 +200,12 @@ function pauseGame() {
 function quitGame() {
   audio.pause();
   mainImage.src = "";
-  intro.style.display = "block";
-  footer.style.display = "block";
+  canvasSnow.style.display = "block";
+  containerMenu.style.display = 'block';
   canvas.style.display = "none";
-  retry.style.display = "none";
-  quit.style.display = "none";
+  blockBtn.style.display = "none";
+  imgBackground.style.display = 'block';
+  imgNew.style.display = 'none';
   score = 0;
   ghostScore = 0;
 }
@@ -388,11 +410,41 @@ function render() {
   }
 
   if (pill.powerup) {
-    ctx.fillStyle = "rgb(3,9,19)";
-    ctx.beginPath();
-    ctx.arc(pill.x, pill.y, 12, 0, Math.PI * 2, true);
-    ctx.closePath();
-    ctx.fill();
+    // ctx.fillStyle = "red";
+    // ctx.beginPath();
+    // ctx.arc(pill.x, pill.y, 12, 0, Math.PI * 2, true);
+    // ctx.closePath();
+    // ctx.fill();
+    //отрисовываем звезду...
+    function drawStar(x, y, spikes, outerRadius, innerRadius) {
+      var rot = (Math.PI / 2) * 3;
+      var x = pill.x;
+      var y = pill.y;
+      var step = Math.PI / spikes;
+
+      ctx.strokeSyle = "#000";
+      ctx.beginPath();
+      ctx.moveTo(x, y - outerRadius);
+      for (let i = 0; i < spikes; i++) {
+        x = pill.x + Math.cos(rot) * outerRadius;
+        y = pill.y + Math.sin(rot) * outerRadius;
+        ctx.lineTo(x, y);
+        rot += step;
+
+        x = pill.x + Math.cos(rot) * innerRadius;
+        y = pill.y + Math.sin(rot) * innerRadius;
+        ctx.lineTo(x, y);
+        rot += step;
+      }
+      ctx.lineTo(pill.x, pill.y - outerRadius);
+      ctx.closePath();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "rgb(215,57,18)";
+      ctx.stroke();
+      ctx.fillStyle = "white";
+      ctx.fill();
+    }
+    drawStar(115, 100, 6, 10, 3);
   }
 
   if (enemy.flash == 0) {
@@ -410,37 +462,33 @@ function render() {
   }
 
   if (score == 5) {
-    ctx.font = "100px Verdana";
+    ctx.font = "100px Sunshiney";
     ctx.fillStyle = "green";
-    ctx.fillText(`You Winner`, 140, 250);
+    ctx.fillText(`You Win`, 140, 250);
     enemy.x = 750;
     enemy.y = 100;
     enemy2.x = 750;
     enemy2.y = 500;
     player.speed = 0;
-    retry.style.display = "block";
-    quit.style.display = "block";
-    footer.style.display = "none";
+    blockBtn.style.display = "flex";
   }
   if (ghostScore == 5) {
-    ctx.font = "100px Verdana";
+    ctx.font = "100px Sunshiney";
     ctx.fillStyle = "red";
-    ctx.fillText(`Game Over`, 140, 250);
+    ctx.fillText(`Game Over`, 160, 250);
     enemy.x = 750;
     enemy.y = 100;
     enemy2.x = 750;
     enemy2.y = 500;
     player.speed = 0;
-    retry.style.display = "block";
-    quit.style.display = "block";
-    footer.style.display = "none";
+    blockBtn.style.display = "flex";
   }
 
-  ctx.font = "20px Verdana";
+  ctx.font = "30px Sunshiney";
   ctx.fillStyle = "white";
   ctx.fillText(`Pacman ${score} : ${ghostScore} Ghost`, 10, 30);
 
-  ctx.font = "20px Verdana";
+  ctx.font = "30px Sunshiney";
 //   let gradient = ctx.createLinearGradient(435, 18, 800, 18);
 //   gradient.addColorStop(0, "rgb(255, 0, 0)");
 //   gradient.addColorStop(1, "rgb(255, 255, 0)");
@@ -481,4 +529,9 @@ function render() {
     50
   );
 };
+
+window.addEventListener('beforeunload', (event) => {
+  event.preventDefault();
+  event.returnValue = 'Возможно внесенные изменения не сохранятся!';
+});
 
