@@ -1,12 +1,7 @@
 'use strict';
 //импорт переменных, для работы с новом файле...
-import {
-  btnLinkPlay,
-  containerMenu,
-  canvasSnow,
-  soundMenu,
-  wrap,
-} from "./main.js";
+import {btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap} from "./main.js";
+import {blockSaveResult} from './ajax.js';
 
 //обьявление глобальных переменных...
 let canvas = document.querySelector('#myCanvas');
@@ -177,6 +172,7 @@ function startGame() {
 //функция для повторной игры...
 function playAgain() {
   blockBtn.style.display = "none";
+  blockSaveResult.style.display = 'none';
   player.speed = 11;
   score = 0;
   grinchScore = 0;
@@ -209,6 +205,7 @@ function quitGame() {
   containerMenu.style.display = "block";
   canvas.style.display = "none";
   blockBtn.style.display = "none";
+  blockSaveResult.style.display = 'none';
   imgBackground.style.display = "block";
   imgNew.style.display = "none";
   score = 0;
@@ -477,6 +474,7 @@ function render() {
     enemy2.y = 500;
     player.speed = 0;
     blockBtn.style.display = "flex";
+    blockSaveResult.style.display = 'flex';
   }
   if (grinchScore == 1) {
     ctx.font = "100px Sunshiney";
@@ -488,15 +486,16 @@ function render() {
     enemy2.y = 500;
     player.speed = 0;
     blockBtn.style.display = "flex";
+    blockSaveResult.style.display = 'flex';
   }
 
   ctx.font = "30px Sunshiney";
   ctx.fillStyle = "white";
-  ctx.fillText(`Pacman ${score} : ${grinchScore} grinch`, 290, 30);
+  ctx.fillText(`Pacman ${score} : ${grinchScore} Grinch`, 290, 30);
 
   ctx.font = "15px Sunshiney";
   ctx.fillStyle = "white";
-  ctx.fillText(`2022 Sodortsov D. All rights reserved`, 590, 540);
+  ctx.fillText(`2022 Sodortsov D. All rights reserved`, 590, 555);
 
   ctx.drawImage(
     mainImage,

@@ -61,13 +61,13 @@ let modalRecord = document.querySelector(".modal_record");
 let modals = document.querySelectorAll(".modal");
 
 //делаем небольшую модалку где будет показываться рекорды игроков...
-let tableRecords = document.querySelector('.table_records');
+// let tableRecords = document.querySelector('.table_records');
 let blockRules = document.querySelector('.blockRules');
 
 btnLinkRec.addEventListener("click", (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
-  tableRecords.style.display = 'block';
+  // tableRecords.style.display = 'block';
   blockRules.style.display = 'none';
 });
 
@@ -82,7 +82,7 @@ modalOver.addEventListener("click", (e) => {
 btnLinkRul.addEventListener('click', (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
-  tableRecords.style.display = 'none';
+  // tableRecords.style.display = 'none';
   blockRules.style.display = 'block';
 });
 
@@ -131,14 +131,14 @@ function draw() {
 //функция отрисовываем название игры...
 function drawName() {
   ctxSnow.fillStyle = "rgb(252,246,214)";
-  ctxSnow.font = "130px sunshiney";
+  ctxSnow.font = "80px sunshiney";
   ctxSnow.fillText(
-    "Christma’s Pacman",
-    500,
+    "Christmas Pacman",
+    canvasSnow.width / 2 + 100,
     canvasSnow.height / 2 + 235
   );
 };
-drawName();
+
 //функция перемещения снежинок...
 //угол будет постоянным инкрементным флагом. К нему будут применены функции Sin и Cos для создания вертикального и горизонтального движения хлопьев...
 let angle = 0;
@@ -204,5 +204,5 @@ window.addEventListener('beforeunload', (event) => {
 });
 
 //экспортируем в другой файл...
-export { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, btnLinkRec };
+export { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, btnLinkRec, btnLinkRul };
 
