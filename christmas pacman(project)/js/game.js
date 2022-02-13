@@ -464,7 +464,7 @@ function render() {
     countblink = 10;
   }
 
-  if (score == 1) {
+  if (score == 2) {
     ctx.font = "100px Sunshiney";
     ctx.fillStyle = "green";
     ctx.fillText(`You Win`, 250, 250);
@@ -476,7 +476,7 @@ function render() {
     blockBtn.style.display = "flex";
     blockSaveResult.style.display = 'flex';
   }
-  if (grinchScore == 1) {
+  if (grinchScore == 2) {
     ctx.font = "100px Sunshiney";
     ctx.fillStyle = "red";
     ctx.fillText(`Game Over`, 220, 250);

@@ -204,5 +204,5 @@ window.addEventListener('beforeunload', (event) => {
 });
 
 //экспортируем в другой файл...
-export { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, btnLinkRec, btnLinkRul, };
+export { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, btnLinkRec, btnLinkRul };
 

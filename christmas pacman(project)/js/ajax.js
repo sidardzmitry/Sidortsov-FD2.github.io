@@ -120,7 +120,6 @@ function readReady(resultH) {
         btnLinkRec.remove();
         btnLinkRul.remove();
         modalRecord.append(headerResult);
-        // modalRecord.append(btnMainMenu);
         modalRecord.append(showList);
     }
 }
