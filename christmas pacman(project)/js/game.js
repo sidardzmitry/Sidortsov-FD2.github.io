@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 //импорт переменных, для работы с новом файле...
 import {btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap} from "./main.js";
 import {blockSaveResult} from './ajax.js';
@@ -537,3 +537,5 @@ window.addEventListener("beforeunload", (event) => {
   event.preventDefault();
   event.returnValue = "Возможно внесенные изменения не сохранятся!";
 });
+
+export {score, grinchScore, quitGame};

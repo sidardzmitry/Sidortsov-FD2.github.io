@@ -1,10 +1,12 @@
-'use strict';
+"use strict";
 //импортируем переменные...
 import {btnLinkPlay, btnLinkRec, btnLinkRul, wrap} from './main.js';
+import {score, grinchScore, quitGame} from './game.js';
 
 
 let modalRecord = document.querySelector('.modal_record');
 btnLinkRec.addEventListener('click', showScore);
+
 let arrResult = [];
 
 let blockSaveResult = document.createElement('div');
@@ -59,10 +61,10 @@ function storeInfo() {
         url: ajaxHandlerScript, type: 'POST', cache: false, dataType: 'json',
         data: { f: 'LOCKGET', n: stringName, p: updatePassword },
         success: lockGetReady, error: errorHandler
-    })
-    // backMenu();
+    });
+    quitGame();
 };
-function lockGetReady(callrresult) {
+function lockGetReady(callresult) {
     if(callresult.error != undefined)
     alert(callresult.error);
     else {
@@ -118,7 +120,7 @@ function readReady(resultH) {
         btnLinkRec.remove();
         btnLinkRul.remove();
         modalRecord.append(headerResult);
-        modalRecord.append(btnMainMenu);
+        // modalRecord.append(btnMainMenu);
         modalRecord.append(showList);
     }
 }
@@ -128,7 +130,7 @@ function errorHandler(jqXHR, StatusStr, ErrorStr) {
 };
 
 if (window.jQuery) {
-    console.log('ok')
+    console.log('hello');
 };
 
 export{blockSaveResult};
