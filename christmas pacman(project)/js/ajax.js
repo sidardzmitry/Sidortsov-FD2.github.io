@@ -112,15 +112,15 @@ function readReady(resultH) {
             arrResult.splice(10)
         }
         function getFrom(V, I, A) {
-            strName += `<div class = 'resultFlex'><span>${V.name}</span><span>${V.score}</span><span>${V.grinchScore}</span></div>`;
+            strName += `<div class = 'resultFlex'><span class = 'spanResult'>${V.name}</span><span class = 'spanResult'>${V.score}</span><span class = 'spanResult'>${V.grinchScore}</span></div>`;
         };
         arrResult.forEach(getFrom)
         showList.innerHTML = strName + strScore + strGrinchScore;
-        btnLinkPlay.remove();
-        btnLinkRec.remove();
-        btnLinkRul.remove();
-        modalRecord.append(headerResult);
-        modalRecord.append(showList);
+        // btnLinkPlay.remove();
+        // btnLinkRec.remove();
+        // btnLinkRul.remove();
+        modalRecord.insertAdjacentElement('beforeend', headerResult);
+        modalRecord.insertAdjacentElement('beforeend', showList);
     }
 }
 
@@ -132,4 +132,4 @@ if (window.jQuery) {
     console.log('hello');
 };
 
-export{blockSaveResult};
+export{blockSaveResult, headerResult, showList};

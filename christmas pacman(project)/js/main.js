@@ -1,11 +1,9 @@
 'use strict';
+
+// import {headerResult, showList} from './ajax.js';
 //определяем глобальные переменные...
-const body = document.querySelector("body");
 const wrap = document.querySelector(".wrap");
 const soundMenu = document.querySelector(".sound_menu");
-
-let inGame = false; // default not in game false
-let inMenu = true; // default in the menu
 
 //работаем с DOM деревом, добавляем блоки, классы, атрибуты, ссылки...
 //container меню...
@@ -58,37 +56,37 @@ createBtnAudioPlay();
 //глобальные переменные для модалки с рекордами...
 let modalOver = document.querySelector(".modal_over");
 let modalRecord = document.querySelector(".modal_record");
-let modals = document.querySelectorAll(".modal");
+// let modals = document.querySelectorAll(".modal");
 
 //делаем небольшую модалку где будет показываться рекорды игроков...
-// let tableRecords = document.querySelector('.table_records');
 let blockRules = document.querySelector('.blockRules');
 
 btnLinkRec.addEventListener("click", (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
-  // tableRecords.style.display = 'block';
   blockRules.style.display = 'none';
 });
 
 modalOver.addEventListener("click", (e) => {
-  //console.log(e.target);
   if (e.target === modalOver) {
     modalRecord.classList.remove("modal_visible");
     modalOver.classList.remove("modal_overlay_visible");
   }
 });
 
+
 btnLinkRul.addEventListener('click', (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
-  // tableRecords.style.display = 'none';
+  headerResult.style.display = 'none';
+  showList.style.display = 'none';
   blockRules.style.display = 'block';
 });
 
 // window.onload = function () {
 let canvasSnow = document.querySelector(".canvas");
 let ctxSnow = canvasSnow.getContext("2d");
+
 //размеры canvas...
 canvasSnow.width = window.innerWidth;
 canvasSnow.height = window.innerHeight;
@@ -204,5 +202,5 @@ window.addEventListener('beforeunload', (event) => {
 });
 
 //экспортируем в другой файл...
-export { btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap, btnLinkRec, btnLinkRul };
+export { wrap, btnLinkPlay, containerMenu, canvasSnow, soundMenu, btnLinkRec, btnLinkRul };
 

@@ -1,6 +1,6 @@
 "use strict";
 //импорт переменных, для работы с новом файле...
-import {btnLinkPlay, containerMenu, canvasSnow, soundMenu, wrap} from "./main.js";
+import { wrap, btnLinkPlay, containerMenu, canvasSnow, soundMenu } from "./main.js";
 import {blockSaveResult} from './ajax.js';
 
 //обьявление глобальных переменных...
@@ -156,17 +156,17 @@ function startGame() {
   mainImage.onload = checkReady;
   mainImage.src = "img/pacman5.png";
 
-  // audio = new Audio();
-  // audio.src = "img/oforia.mp3";
-  // audio.volume = 0.1;
-  // audio.loop = 1;
-  // audio.play();
-  // win = new Audio();
-  // win.src = "img/wohoo.wav";
-  // win.volume = 0.3;
-  // lose = new Audio();
-  // lose.src = "img/doh.wav";
-  // lose.volume = 0.3;
+  audio = new Audio();
+  audio.src = "img/oforia.mp3";
+  audio.volume = 0.1;
+  audio.loop = 1;
+  audio.play();
+  win = new Audio();
+  win.src = "img/wohoo.wav";
+  win.volume = 0.3;
+  lose = new Audio();
+  lose.src = "img/doh.wav";
+  lose.volume = 0.3;
 }
 
 //функция для повторной игры...
@@ -413,11 +413,6 @@ function render() {
   }
 
   if (pill.powerup) {
-    // ctx.fillStyle = "red";
-    // ctx.beginPath();
-    // ctx.arc(pill.x, pill.y, 12, 0, Math.PI * 2, true);
-    // ctx.closePath();
-    // ctx.fill();
     //отрисовываем звезду...
     function drawStar(x, y, spikes, outerRadius, innerRadius) {
       var rot = (Math.PI / 2) * 3;
@@ -538,4 +533,5 @@ window.addEventListener("beforeunload", (event) => {
   event.returnValue = "Возможно внесенные изменения не сохранятся!";
 });
 
+//export переменных...
 export {score, grinchScore, quitGame};

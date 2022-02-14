@@ -130,17 +130,6 @@ body {
   transition: all 0.3s ease-in-out;
   z-index: 5;
 }
-/* .table_records {
-  border: 3px solid red;
-  border-collapse: collapse;
-  text-align: center;
-  width: 500px;
-  height: auto;
-  display: none;
-}
-.table_td_records {
-  border: 3px solid red;
-} */
 .blockRules{
   text-align: center;
   display: flex;
@@ -238,6 +227,39 @@ body {
   transition: .5s;
   transform: scale(1.05,1.05);
   cursor: pointer;
+}
+.headerResult{
+  position: absolute;
+  top: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 40px;
+  font-family: sunshiney;
+  color: white !important;
+}
+.resultStyle{
+  position: absolute;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  top: 40%;
+}
+.resultFlex{
+  display: flex;
+  position: absolute;
+  justify-content: space-around;
+  align-items: center;
+  width: 350px;
+  height: auto;
+  border: 1px solid red;
+}
+.spanResult{
+  color: white !important;
+  font-size: 30px;
+  font-family: sunshiney;
+  display: flex;
+  justify-content: space-around;
 }
 
 
