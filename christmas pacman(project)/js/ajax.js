@@ -1,7 +1,7 @@
 "use strict";
 //импортируем переменные...
-import {btnLinkPlay, btnLinkRec, btnLinkRul, wrap} from './main.js';
-import {score, grinchScore, quitGame} from './game.js';
+import { btnLinkRec, btnLinkRul, wrap } from './main.js';
+import { score, grinchScore, quitGame } from './game.js';
 
 
 let modalRecord = document.querySelector('.modal_record');
@@ -116,9 +116,6 @@ function readReady(resultH) {
         };
         arrResult.forEach(getFrom)
         showList.innerHTML = strName + strScore + strGrinchScore;
-        // btnLinkPlay.remove();
-        // btnLinkRec.remove();
-        // btnLinkRul.remove();
         modalRecord.insertAdjacentElement('beforeend', headerResult);
         modalRecord.insertAdjacentElement('beforeend', showList);
     }
@@ -132,4 +129,14 @@ if (window.jQuery) {
     console.log('hello');
 };
 
-export{blockSaveResult, headerResult, showList};
+btnLinkRul.addEventListener('click', () => {
+    headerResult.style.display = 'none';
+    showList.style.display = 'none';
+});
+
+btnLinkRec.addEventListener('click', () => {
+    headerResult.style.display = 'block';
+    showList.style.display = 'flex';
+});
+
+export { blockSaveResult };

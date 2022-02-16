@@ -16,6 +16,7 @@ const saveName = document.createElement('button');
 saveName.disabled = true;
 saveName.innerHTML = 'Save result';
 saveName.classList = 'btnSave';
+
 saveName.addEventListener('click', storeInfo)
 function saveResult() {
     inputName.value = '';

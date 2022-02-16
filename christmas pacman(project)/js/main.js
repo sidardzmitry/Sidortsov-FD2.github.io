@@ -1,6 +1,5 @@
 'use strict';
 
-// import {headerResult, showList} from './ajax.js';
 //определяем глобальные переменные...
 const wrap = document.querySelector(".wrap");
 const soundMenu = document.querySelector(".sound_menu");
@@ -68,7 +67,7 @@ btnLinkRec.addEventListener("click", (e) => {
 });
 
 modalOver.addEventListener("click", (e) => {
-  if (e.target === modalOver) {
+  if (e.target == modalOver) {
     modalRecord.classList.remove("modal_visible");
     modalOver.classList.remove("modal_overlay_visible");
   }
@@ -78,8 +77,8 @@ modalOver.addEventListener("click", (e) => {
 btnLinkRul.addEventListener('click', (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
-  headerResult.style.display = 'none';
-  showList.style.display = 'none';
+  // headerResult.style.display = 'none';
+  // showList.style.display = 'none';
   blockRules.style.display = 'block';
 });
 

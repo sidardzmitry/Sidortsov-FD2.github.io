@@ -1,7 +1,7 @@
 "use strict";
 //импорт переменных, для работы с новом файле...
+import { blockSaveResult } from './ajax.js';
 import { wrap, btnLinkPlay, containerMenu, canvasSnow, soundMenu } from "./main.js";
-import {blockSaveResult} from './ajax.js';
 
 //обьявление глобальных переменных...
 let canvas = document.querySelector('#myCanvas');
@@ -534,4 +534,4 @@ window.addEventListener("beforeunload", (event) => {
 });
 
 //export переменных...
-export {score, grinchScore, quitGame};
+export { score, grinchScore, quitGame };
