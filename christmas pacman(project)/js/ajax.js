@@ -5,6 +5,7 @@ import { score, grinchScore, quitGame } from './game.js';
 
 
 let modalRecord = document.querySelector('.modal_record');
+
 btnLinkRec.addEventListener('click', showScore);
 
 let arrResult = [];
@@ -105,7 +106,7 @@ function readReady(resultH) {
         let strGrinchScore = '';
         arrResult = JSON.parse(resultH.result);
         function compareScores(A, B) {
-            return B.score - A.score && B.grinchScore - A.grinchScore
+            return (B.score - A.score && B.grinchScore - A.grinchScore)
         }
         arrResult.sort(compareScores);
         if(arrResult.length > 10) {
@@ -139,4 +140,4 @@ btnLinkRec.addEventListener('click', () => {
     showList.style.display = 'flex';
 });
 
-export { blockSaveResult };
+export { blockSaveResult, inputName, saveName };

@@ -123,17 +123,17 @@ function draw() {
   ctxSnow.fill();
   update();
   drawName();
-}
+};
 
 //функция отрисовываем название игры...
 function drawName() {
-  ctxSnow.fillStyle = "rgb(252,246,214)";
-  ctxSnow.font = "80px sunshiney";
-  ctxSnow.fillText(
-    "Christmas Pacman",
-    canvasSnow.width / 2 + 100,
-    canvasSnow.height / 2 + 235
+    ctxSnow.fillStyle = "rgb(255,0,0)";
+    ctxSnow.strokeStyle = 'rgb(1,17,50)';
+    ctxSnow.lineWidth = 3;
+    ctxSnow.font = "100px sunshiney";
+    ctxSnow.fillText("Christmas Pacman", canvasSnow.width / 2 + 30, canvasSnow.height / 2 + 330
   );
+  ctxSnow.strokeText("Christmas Pacman", canvasSnow.width / 2 + 30, canvasSnow.height / 2 + 330)
 };
 
 //функция перемещения снежинок...

@@ -22,8 +22,8 @@ body {
 #myCanvas{
   position: absolute;
   display: none;
-  left: 5%;
-  top: 2%;
+  right: 3%;
+  top: 1%;
   /* outline: 10px double white; */
   z-index: 0;
 }
@@ -154,7 +154,7 @@ body {
 .blockBtn{
   position: absolute;
   bottom: 50%;
-  left: 22%;
+  right: 20%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,7 +182,7 @@ body {
 .pause{
   position: absolute;
   top: 33%;
-  left: 17%;
+  right: 17%;
   color: white;
   font-family: Sunshiney;
   display: none;
@@ -191,7 +191,7 @@ body {
   position: absolute;
   z-index: 3;
   bottom: 38%;
-  left: 24%;
+  right: 22%;
   text-align: center;
   display: flex;
   flex-direction: column;
