@@ -1,5 +1,4 @@
-'use strict';
-
+"use strict";
 //определяем глобальные переменные...
 const wrap = document.querySelector(".wrap");
 const soundMenu = document.querySelector(".sound_menu");
@@ -58,12 +57,12 @@ let modalRecord = document.querySelector(".modal_record");
 // let modals = document.querySelectorAll(".modal");
 
 //делаем небольшую модалку где будет показываться рекорды игроков...
-let blockRules = document.querySelector('.blockRules');
+let blockRules = document.querySelector(".blockRules");
 
 btnLinkRec.addEventListener("click", (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
-  blockRules.style.display = 'none';
+  blockRules.style.display = "none";
 });
 
 modalOver.addEventListener("click", (e) => {
@@ -73,13 +72,12 @@ modalOver.addEventListener("click", (e) => {
   }
 });
 
-
-btnLinkRul.addEventListener('click', (e) => {
+btnLinkRul.addEventListener("click", (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
   // headerResult.style.display = 'none';
   // showList.style.display = 'none';
-  blockRules.style.display = 'block';
+  blockRules.style.display = "block";
 });
 
 // window.onload = function () {
@@ -123,18 +121,25 @@ function draw() {
   ctxSnow.fill();
   update();
   drawName();
-};
+}
 
 //функция отрисовываем название игры...
 function drawName() {
-    ctxSnow.fillStyle = "rgb(255,0,0)";
-    ctxSnow.strokeStyle = 'rgb(1,17,50)';
-    ctxSnow.lineWidth = 3;
-    ctxSnow.font = "100px sunshiney";
-    ctxSnow.fillText("Christmas Pacman", canvasSnow.width / 2 + 30, canvasSnow.height / 2 + 330
+  ctxSnow.fillStyle = "rgb(255,0,0)";
+  ctxSnow.strokeStyle = "rgb(1,17,50)";
+  ctxSnow.lineWidth = 3;
+  ctxSnow.font = "100px sunshiney";
+  ctxSnow.fillText(
+    "Christmas Pacman",
+    canvasSnow.width / 2 + 30,
+    canvasSnow.height / 2 + 330
   );
-  ctxSnow.strokeText("Christmas Pacman", canvasSnow.width / 2 + 30, canvasSnow.height / 2 + 330)
-};
+  ctxSnow.strokeText(
+    "Christmas Pacman",
+    canvasSnow.width / 2 + 30,
+    canvasSnow.height / 2 + 330
+  );
+}
 
 //функция перемещения снежинок...
 //угол будет постоянным инкрементным флагом. К нему будут применены функции Sin и Cos для создания вертикального и горизонтального движения хлопьев...
@@ -195,11 +200,18 @@ setInterval(draw, 25);
 // };
 
 //событие на закрытие окна брайзера...
-window.addEventListener('beforeunload', (event) => {
+window.addEventListener("beforeunload", (event) => {
   event.preventDefault();
-  event.returnValue = 'Возможно внесенные изменения не сохранятся!';
+  event.returnValue = "Возможно внесенные изменения не сохранятся!";
 });
 
 //экспортируем в другой файл...
-export { wrap, btnLinkPlay, containerMenu, canvasSnow, soundMenu, btnLinkRec, btnLinkRul };
-
+export {
+  wrap,
+  btnLinkPlay,
+  containerMenu,
+  canvasSnow,
+  soundMenu,
+  btnLinkRec,
+  btnLinkRul,
+};
