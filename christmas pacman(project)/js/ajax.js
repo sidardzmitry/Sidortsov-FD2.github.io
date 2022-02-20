@@ -1,21 +1,8 @@
 "use strict";
-//импортируем переменные...
-import { btnLinkRec, btnLinkRul, wrap } from "./main.js";
-import {
-  score,
-  grinchScore,
-  quitGame,
-  canvas,
-  player,
-  enemy,
-  enemy2,
-} from "./game.js";
-
-let modalRecord = document.querySelector(".modal_record");
 
 btnLinkRec.addEventListener("click", showScore);
 
-let arrResult = [];
+
 
 let blockSaveResult = document.createElement("div");
 blockSaveResult.classList.add("blockSaveResult");
@@ -55,7 +42,8 @@ function checkInput() {
 let showList = document.createElement("div");
 showList.classList.add("resultStyle");
 
-let ajaxHandlerScript = "https://fe.it-academy.by/AjaxStringStorage2.php";
+let arrResult = [];
+const ajaxHandlerScript = "https://fe.it-academy.by/AjaxStringStorage2.php";
 let updatePassword;
 let stringName = "SIDORTSOV_CHRISTMAS_PACMAN_RESULTS";
 
@@ -71,18 +59,19 @@ function storeInfo() {
     error: errorHandler,
   });
   quitGame();
-}
+};
+
 function lockGetReady(callresult) {
-  if (callresult.error != undefined) alert(callresult.error);
+  if (callresult.error != undefined) 
+    alert(callresult.error);
   else {
     let info = {
       name: inputName.value,
       score: score,
-      grinchScore: grinchScore,
+      grinchScore: grinchScore
     };
     arrResult.push(info);
-    console.log(score);
-    console.log(grinchScore);
+
     $.ajax({
       url: ajaxHandlerScript,
       type: "POST",
@@ -95,14 +84,15 @@ function lockGetReady(callresult) {
         p: updatePassword,
       },
       success: updateReady,
-      error: errorHandler,
+      error: errorHandler
     });
-  }
-}
+  };
+};
 
 function updateReady(callresult) {
-  if (callresult.error != undefined) alert(callresult.error);
-}
+  if (callresult.error != undefined) 
+    alert(callresult.error);
+};
 
 function showScore() {
   $.ajax({
@@ -112,12 +102,13 @@ function showScore() {
     dataType: "json",
     data: { f: "READ", n: stringName },
     success: readReady,
-    error: errorHandler,
+    error: errorHandler
   });
-}
+};
 
 function readReady(resultH) {
-  if (resultH.error != undefined) alert(resultH.error);
+  if (resultH.error != undefined) 
+    alert(resultH.error);
   else {
     let strName = "";
     let strScore = "";
@@ -125,14 +116,14 @@ function readReady(resultH) {
     arrResult = JSON.parse(resultH.result);
     function compareScores(A, B) {
       return B.score - A.score && B.grinchScore - A.grinchScore;
-    }
+    };
     arrResult.sort(compareScores);
-    if (arrResult.length > 10) {
-      arrResult.splice(10);
-    }
+    if (arrResult.length > 2) {
+      arrResult.splice(2);
+    };
     function getFrom(V, I, A) {
-      strName += `<div class = 'resultFlex'><span class = 'spanResult'>${V.name}</span><span class = 'spanResult'>${V.score}</span><span class = 'spanResult'>${V.grinchScore}</span></div>`;
-    }
+      strName += `<div class = "resultFlex"><span class = "spanResult">${V.name}</span><span class = "spanResult">${V.score}</span><span class = "spanResult">${V.grinchScore}</span></div>`;
+    };
     arrResult.forEach(getFrom);
     showList.innerHTML = strName + strScore + strGrinchScore;
     modalRecord.insertAdjacentElement("beforeend", headerResult);
@@ -141,25 +132,42 @@ function readReady(resultH) {
     player.speed = 0;
     enemy.speed = 0;
     enemy2.speed = 0;
-  }
-}
+    enemy3.speed = 0;
+  };
+};
 
 function errorHandler(jqXHR, StatusStr, ErrorStr) {
   alert(StatusStr + " " + ErrorStr);
-}
+};
 
 if (window.jQuery) {
-  console.log("hello");
+  console.log("hello guys");
+};
+
+
+let blockResultTable = document.createElement('div');
+blockResultTable.classList.add('blockResultTable');
+modalRecord.insertAdjacentElement('beforeend', blockResultTable);
+
+//создаем функцию для создания таблицы слобцов...
+function createSpanResultTable(className) {
+  let spanResultTable = document.createElement('span');
+  spanResultTable.setAttribute("spanResultTable", className);
+  return spanResultTable;
 }
+
+blockResultTable.appendChild(createSpanResultTable('spanResultTable')).textContent = 'Player';
+blockResultTable.appendChild(createSpanResultTable('spanResultTable')).textContent = 'Pacman';
+blockResultTable.appendChild(createSpanResultTable('spanResultTable')).textContent = 'Grinch';
+
 
 btnLinkRul.addEventListener("click", () => {
   headerResult.style.display = "none";
   showList.style.display = "none";
+  blockResultTable.style.display = 'none';
 });
 
 btnLinkRec.addEventListener("click", () => {
   headerResult.style.display = "block";
   showList.style.display = "flex";
 });
-
-export { blockSaveResult, inputName, saveName };

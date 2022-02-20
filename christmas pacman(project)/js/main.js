@@ -1,7 +1,9 @@
 "use strict";
+
 //определяем глобальные переменные...
 const wrap = document.querySelector(".wrap");
 const soundMenu = document.querySelector(".sound_menu");
+soundMenu.loop = true;
 
 //работаем с DOM деревом, добавляем блоки, классы, атрибуты, ссылки...
 //container меню...
@@ -204,14 +206,3 @@ window.addEventListener("beforeunload", (event) => {
   event.preventDefault();
   event.returnValue = "Возможно внесенные изменения не сохранятся!";
 });
-
-//экспортируем в другой файл...
-export {
-  wrap,
-  btnLinkPlay,
-  containerMenu,
-  canvasSnow,
-  soundMenu,
-  btnLinkRec,
-  btnLinkRul,
-};

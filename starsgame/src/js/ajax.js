@@ -1,6 +1,6 @@
 "use strict";
 btnScore.addEventListener('click', showScore);//show the result on the Score button in the menu
-let arrResult = [];
+
 let inputName = document.createElement('input');
 inputName.classList = 'inputName';
 inputName.setAttribute('placeholder', 'enter your name');
@@ -38,6 +38,7 @@ function checkInput() {
 let showList = document.createElement('div');
 showList.classList = "resultStyle";
 
+let arrResult = [];
 const ajaxHandlerScript = "https://fe.it-academy.by/AjaxStringStorage2.php";
 let updatePassword;
 let stringName = 'BUBELEV_WAR_GAMEOVER';

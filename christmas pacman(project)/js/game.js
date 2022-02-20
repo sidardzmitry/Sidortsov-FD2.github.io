@@ -1,13 +1,4 @@
 "use strict";
-//импорт переменных, для работы с новом файле...
-import {
-  wrap,
-  btnLinkPlay,
-  containerMenu,
-  canvasSnow,
-  soundMenu,
-} from "./main.js";
-import { blockSaveResult, inputName, saveName } from "./ajax.js";
 
 //обьявление глобальных переменных...
 let canvas = document.querySelector("#myCanvas");
@@ -20,6 +11,7 @@ let grinch3 = false;
 let countblink = 10;
 let arrKeyCode = {};
 let gamePaused = false;
+
 
 let audio = document.querySelector(".sound_background");
 let win = document.querySelector(".sound_bonus");
@@ -666,12 +658,11 @@ function render() {
     50
   );
 }
-
 //событие на закрытие окна брайзера...
 window.addEventListener("beforeunload", (event) => {
   event.preventDefault();
   event.returnValue = "Возможно внесенные изменения не сохранятся!";
 });
 
-//export переменных...
-export { score, grinchScore, quitGame, canvas, player, enemy, enemy2 };
+
+
