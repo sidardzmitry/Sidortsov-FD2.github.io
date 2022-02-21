@@ -64,12 +64,14 @@ btnLinkRec.addEventListener("click", (e) => {
   modalRecord.classList.add("modal_visible");
   modalOver.classList.add("modal_overlay_visible");
   blockRules.style.display = "none";
+  modalOver.style.display = 'block';
 });
 
 modalOver.addEventListener("click", (e) => {
   if (e.target == modalOver) {
     modalRecord.classList.remove("modal_visible");
     modalOver.classList.remove("modal_overlay_visible");
+    modalOver.style.display = 'none';
   }
 });
 
@@ -79,6 +81,7 @@ btnLinkRul.addEventListener("click", (e) => {
   // headerResult.style.display = 'none';
   // showList.style.display = 'none';
   blockRules.style.display = "block";
+  modalOver.style.display = 'block';
 });
 
 // window.onload = function () {
