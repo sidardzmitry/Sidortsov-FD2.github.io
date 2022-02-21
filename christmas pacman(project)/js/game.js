@@ -61,6 +61,7 @@ document.addEventListener("keyup", (e) => {
   false
 );
 
+//obj pacman...
 let player = {
   x: 50,
   y: 100,
@@ -70,6 +71,7 @@ let player = {
   speed: 17,
 };
 
+//obj grinch...
 let enemy = {
   x: 150,
   y: 200,
@@ -81,6 +83,7 @@ let enemy = {
   grincheat: false,
 };
 
+//obj grinch2...
 let enemy2 = {
   x: 150,
   y: 200,
@@ -92,6 +95,7 @@ let enemy2 = {
   grincheat: false,
 };
 
+//obj grinch3...
 let enemy3 = {
   x: 150,
   y: 200,
@@ -103,6 +107,7 @@ let enemy3 = {
   grincheat: false,
 };
 
+//obj star...
 let star = {
   x: 10,
   y: 10,
@@ -168,8 +173,8 @@ function startGame() {
 
   audio = new Audio();
   audio.src = "/christmas pacman(project)/assets/sound_background.mp3";
-  audio.volume = 0.1;
-  audio.loop = 1;
+  audio.volume = 0.1;//громкость...
+  audio.loop = 1;//повторение...
   audio.play();
   win = new Audio();
   win.src = "/christmas pacman(project)/assets/sound_bonus.mp3";
@@ -177,7 +182,7 @@ function startGame() {
   lose = new Audio();
   lose.src = "/christmas pacman(project)/assets/sound_eat.mp3";
   lose.volume = 0.3;
-}
+};
 
 //функция для повторной игры...
 function playAgain() {
@@ -308,16 +313,16 @@ function render() {
 
   if (enemy.x >= canvas.width - 32) {
     enemy.x = 0;
-  }
+  };
   if (enemy.y >= canvas.height - 32) {
     enemy.y = 0;
-  }
+  };
   if (enemy.x < 0) {
     enemy.x = canvas.width - 32;
-  }
+  };
   if (enemy.y < 0) {
     enemy.y = canvas.height - 32;
-  }
+  };
 
   //отрисовываем второго гринча....
   if (enemy2.moving < 0) {
@@ -327,7 +332,7 @@ function render() {
     enemy2.diry = 0;
     if (star.grincheat) {
       enemy2.speed = enemy2.speed * -1;
-    }
+    };
     if (enemy2.moving % 2) {
       if (player.x < enemy2.x) {
         enemy2.dirx = -enemy2.speed;
@@ -339,9 +344,9 @@ function render() {
         enemy2.diry = -enemy2.speed;
       } else {
         enemy2.diry = enemy2.speed;
-      }
-    }
-  }
+      };
+    };
+  };
 
   enemy2.moving--;
   enemy2.x = enemy2.x + enemy2.dirx;
@@ -349,16 +354,16 @@ function render() {
 
   if (enemy2.x >= canvas.width - 32) {
     enemy2.x = 0;
-  }
+  };
   if (enemy2.y >= canvas.height - 32) {
     enemy2.y = 0;
-  }
+  };
   if (enemy2.x < 0) {
     enemy2.x = canvas.width - 32;
-  }
+  };
   if (enemy2.y < 0) {
     enemy2.y = canvas.height - 32;
-  }
+  };
   //Collision detection grinch
   //отрисовываем третьего гринча...
   if (enemy3.moving < 0) {
@@ -368,21 +373,21 @@ function render() {
     enemy3.diry = 0;
     if (star.grincheat) {
       enemy3.speed = enemy3.speed * -1;
-    }
+    };
     if (enemy3.moving % 2) {
       if (player.x < enemy3.x) {
         enemy3.dirx = -enemy3.speed;
       } else {
         enemy3.dirx = enemy3.speed;
-      }
+      };
     } else {
       if (player.y < enemy3.y) {
         enemy3.diry = -enemy3.speed;
       } else {
         enemy3.diry = enemy3.speed;
-      }
-    }
-  }
+      };
+    };
+  };
 
   enemy3.moving--;
   enemy3.x = enemy3.x + enemy3.dirx;
@@ -390,16 +395,16 @@ function render() {
 
   if (enemy3.x >= canvas.width - 32) {
     enemy3.x = 0;
-  }
+  };
   if (enemy3.y >= canvas.height - 32) {
     enemy3.y = 0;
-  }
+  };
   if (enemy3.x < 0) {
     enemy3.x = canvas.width - 32;
-  }
+  };
   if (enemy3.y < 0) {
     enemy3.y = canvas.height - 32;
-  }
+  };
 
   //обнаруживаем столкновения для гринчей...
   // гринч 1...
@@ -417,13 +422,13 @@ function render() {
       grinchScore++;
       console.log("grinchScore", grinchScore);
       lose.play();
-    }
+    };
     player.x = 10;
     player.y = 100;
     enemy.x = 600;
     enemy.y = 400;
     star.pcountdown = 0;
-  }
+  };
 
   // гринч 2...
   if (
@@ -440,13 +445,13 @@ function render() {
       grinchScore++;
       console.log("grinchScore", grinchScore);
       lose.play();
-    }
+    };
     player.x = 10;
     player.y = 100;
     enemy2.x = 600;
     enemy2.y = 400;
     star.pcountdown = 0;
-  }
+  };
 
   // гринч 3...
   if (
@@ -469,7 +474,7 @@ function render() {
     enemy3.x = 600;
     enemy3.y = 400;
     star.pcountdown = 0;
-  }
+  };
 
   //условие столкновения со звезды(меняем анимацию для гринчей)...
   if (
@@ -491,31 +496,31 @@ function render() {
     enemy.grincheat = true;
     enemy2.grincheat = true;
     enemy3.grincheat = true;
-  }
+  };
 
   if (enemy.grincheat) {
     star.pcountdown--;
     if (star.pcountdown <= 0) {
       enemy.grincheat = false;
       enemy.grinchNum = star.grinchNum;
-    }
-  }
+    };
+  };
 
   if (enemy2.grincheat) {
     star.pcountdown--;
     if (star.pcountdown <= 0) {
       enemy2.grincheat = false;
       enemy2.grinchNum = star.grinchNum;
-    }
-  }
+    };
+  };
 
   if (enemy3.grincheat) {
     star.pcountdown--;
     if (star.pcountdown <= 0) {
       enemy3.grincheat = false;
       enemy3.grinchNum = star.grinchNum;
-    }
-  }
+    };
+  };
 
   if (star.powerup) {
     //отрисовываем звезду...
@@ -538,7 +543,7 @@ function render() {
         y = star.y + Math.sin(rot) * innerRadius;
         ctx.lineTo(x, y);
         rot += step;
-      }
+      };
       ctx.lineTo(star.x, star.y - outerRadius);
       ctx.closePath();
       ctx.lineWidth = 2;
@@ -546,9 +551,9 @@ function render() {
       ctx.stroke();
       ctx.fillStyle = "rgb(255,255,255)";
       ctx.fill();
-    }
+    };
     drawStar(115, 100, 7, 10, 2);
-  }
+  };
 
   if (enemy.flash == 0) {
     enemy.flash = 32;
@@ -558,13 +563,13 @@ function render() {
     enemy.flash = 0;
     enemy2.flash = 0;
     enemy3.flash = 0;
-  }
+  };
 
   if (countblink > 10) {
     countblink--;
   } else {
     countblink = 10;
-  }
+  };
 
   if (score == 5) {
     ctx.font = "100px Sunshiney";
@@ -582,7 +587,7 @@ function render() {
     player.speed = 0;
     blockBtn.style.display = "flex";
     blockSaveResult.style.display = "flex";
-  }
+  };
   if (grinchScore == 5) {
     ctx.font = "100px Sunshiney";
     ctx.fillStyle = "rgb(255,0,0)";
@@ -599,7 +604,7 @@ function render() {
     player.speed = 0;
     blockBtn.style.display = "flex";
     blockSaveResult.style.display = "flex";
-  }
+  };
 
   ctx.font = "30px Sunshiney";
   ctx.fillStyle = "white";
@@ -610,51 +615,12 @@ function render() {
   ctx.fillText(`2022 Sodortsov D. All rights reserved`, 590, 555);
 
   //отрисовываем всех...
-  ctx.drawImage(
-    mainImage,
-    enemy.grinchNum,
-    enemy.flash,
-    32,
-    32,
-    enemy.x,
-    enemy.y,
-    50,
-    50
-  );
-  ctx.drawImage(
-    mainImage,
-    enemy2.grinchNum,
-    enemy2.flash,
-    32,
-    32,
-    enemy2.x,
-    enemy2.y,
-    50,
-    50
-  );
-  ctx.drawImage(
-    mainImage,
-    enemy3.grinchNum,
-    enemy3.flash,
-    32,
-    32,
-    enemy3.x,
-    enemy3.y,
-    50,
-    50
-  );
-  ctx.drawImage(
-    mainImage,
-    player.pacMouth,
-    player.pacDir,
-    32,
-    32,
-    player.x,
-    player.y,
-    50,
-    50
-  );
-}
+  ctx.drawImage(mainImage, enemy.grinchNum, enemy.flash, 32, 32, enemy.x, enemy.y, 50, 50);
+  ctx.drawImage(mainImage, enemy2.grinchNum, enemy2.flash, 32, 32, enemy2.x, enemy2.y, 50, 50);
+  ctx.drawImage(mainImage, enemy3.grinchNum, enemy3.flash, 32, 32, enemy3.x, enemy3.y, 50, 50);
+  ctx.drawImage(mainImage, player.pacMouth, player.pacDir, 32, 32, player.x, player.y, 50, 50);
+};
+
 //событие на закрытие окна брайзера...
 window.addEventListener("beforeunload", (event) => {
   event.preventDefault();

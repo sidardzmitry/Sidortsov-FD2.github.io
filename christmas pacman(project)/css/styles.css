@@ -107,10 +107,12 @@ body {
 .soundOn {
   background-image: url(../assets/sound_on.svg);
   background-repeat: no-repeat;
+  transition: .3s;
 }
 .soundOff {
   background-image: url(../assets/sound_off.svg);
   background-repeat: no-repeat;
+  transition: .3s;
 }
 /*стилизация модального одна рекордов*/
 .modal_over {
