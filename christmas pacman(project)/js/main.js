@@ -56,7 +56,6 @@ createBtnAudioPlay();
 //глобальные переменные для модалки с рекордами...
 let modalOver = document.querySelector(".modal_over");
 let modalRecord = document.querySelector(".modal_record");
-// let modals = document.querySelectorAll(".modal");
 
 //делаем небольшую модалку где будет показываться рекорды игроков...
 let blockRules = document.querySelector(".blockRules");
@@ -191,11 +190,11 @@ function update() {
             r: smallParticles.r,
             d: smallParticles.d,
           };
-        }
-      }
-    }
-  }
-}
+        };
+      };
+    };
+  };
+};
 
 //цикл анимации...
 setInterval(draw, 25);

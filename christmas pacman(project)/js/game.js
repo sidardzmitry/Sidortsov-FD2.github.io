@@ -48,18 +48,14 @@ btnLinkPlay.addEventListener("click", startGame);
 retry.addEventListener("click", playAgain);
 quit.addEventListener("click", quitGame);
 
-document.addEventListener(
-  "keydown",
-  (e) => {
+document.addEventListener("keydown", (e) => {
     arrKeyCode[e.code] = true;
     move(arrKeyCode);
   },
   false
 );
 
-document.addEventListener(
-  "keyup",
-  (e) => {
+document.addEventListener("keyup", (e) => {
     delete arrKeyCode[e.code];
   },
   false
@@ -120,44 +116,44 @@ function move(arrKeyCode) {
   if ("ArrowLeft" in arrKeyCode) {
     player.x -= player.speed;
     player.pacDir = 64;
-  }
+  };
   if ("ArrowUp" in arrKeyCode) {
     player.y -= player.speed;
     player.pacDir = 96;
-  }
+  };
   if ("ArrowRight" in arrKeyCode) {
     player.x += player.speed;
     player.pacDir = 0;
-  }
+  };
   if ("ArrowDown" in arrKeyCode) {
     player.y += player.speed;
     player.pacDir = 32;
-  }
+  };
 
   if ("Enter" in arrKeyCode) {
     pauseGame();
-  }
+  };
 
   if (player.x >= canvas.width - 48) {
     player.x = canvas.width - 48;
-  }
+  };
   if (player.y >= canvas.height - 48) {
     player.y = canvas.height - 48;
-  }
+  };
   if (player.x < 0) {
     player.x = 0;
-  }
+  };
   if (player.y < 0) {
     player.y = 0;
-  }
+  };
   if (player.pacMouth == 320) {
     player.pacMouth = 352;
   } else {
     player.pacMouth = 320;
-  }
+  };
 
   render();
-}
+};
 
 function startGame() {
   containerMenu.style.display = "none";
@@ -190,7 +186,7 @@ function playAgain() {
   player.speed = 11;
   score = 0;
   grinchScore = 0;
-}
+};
 
 //функция для паузы в игре...
 function pauseGame() {
@@ -247,6 +243,7 @@ function myNum(n) {
 };
 
 //рендерим всю игру (поле и игроков)...
+//рисуем звезду...
 function render() {
   ctx.fillStyle = "rgb(3,38,81)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
