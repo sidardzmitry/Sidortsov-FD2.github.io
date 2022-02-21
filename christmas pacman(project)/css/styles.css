@@ -136,9 +136,12 @@ body {
   width: 400px;
   font-size: 27px;
   color: rgb(255,255,255);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial;
   background: transparent;
   display: none;
+}
+.emText{
+  color: rgb(255, 0, 0)
 }
 .modal_overlay_visible {
   opacity: 1;
@@ -272,6 +275,48 @@ body {
   justify-content: space-between;
   align-items: center;
   color: rgb(255,255,255) !important;
+}
+
+@media screen and (max-width: 1050px){
+  .btnLink{
+    font-size: 18px;
+  }
+  btnAudioPlay{
+    width: 20px;
+    height: 20px;
+  }
+  .play{
+    padding: 3px 21px;
+  }
+  .records{
+    padding: 3px 26px;
+  }
+  .rules{
+    padding: 3px 33px;
+  }
+  .blockBtn{
+    right: 35%;
+  }
+  .retry{
+    padding: 3px 12px;
+    margin: 5px;
+  }
+  .quit{
+    padding: 3px 30px;
+    margin: 5px;
+  }
+  .blockSaveResult{
+    right: 38%;
+    bottom: 39%;
+  }
+  .inputName{
+    width: 150px;
+    height: 25px;
+  }
+  .btnSave{
+    font-size: 18px;
+    padding: 3px 20px;
+  }
 }
 
 

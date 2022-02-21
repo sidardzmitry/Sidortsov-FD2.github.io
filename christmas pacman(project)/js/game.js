@@ -210,41 +210,41 @@ function pauseGame() {
     canvas.style.opacity = "1";
     messagePause.style.display = "none";
     gamePaused = false;
-  }
-}
+  };
+};
 
 //функция для прекращения игры...
 function quitGame() {
   audio.pause();
   mainImage.src = "";
   canvasSnow.style.display = "block";
-  containerMenu.style.display = "block";
+  containerMenu.style.display = "flex";
   canvas.style.display = "none";
-  blockBtn.style.display = "none";
   blockSaveResult.style.display = "none";
+  blockBtn.style.display = "none";
+  retry.style.display = 'none';
+  quit.style.display = 'none';
   inputName.style.display = "none";
   saveName.style.display = "none";
   imgBackground.style.display = "block";
   imgNew.style.display = "none";
-  score = 0;
-  grinchScore = 0;
-}
+};
 
 //проверяем готовность...
 function checkReady() {
   this.ready = true;
   playGame();
-}
+};
 
 //запускаем функции для игры отрисовки игры...
 function playGame() {
   render();
   requestAnimationFrame(playGame);
-}
+};
 
 function myNum(n) {
   return Math.floor(Math.random() * n);
-}
+};
 
 //рендерим всю игру (поле и игроков)...
 function render() {
@@ -258,28 +258,28 @@ function render() {
     star.x = myNum(600) + 30;
     star.y = myNum(550);
     star.powerup = true;
-  }
+  };
 
   if (!grinch) {
     enemy.grinchNum = myNum(5) * 64;
     enemy.x = myNum(750);
     enemy.y = myNum(250) + 30;
     grinch = true;
-  }
+  };
 
   if (!grinch2) {
     enemy2.grinchNum = myNum(5) * 64;
     enemy2.x = myNum(750);
     enemy2.y = myNum(250) + 30;
     grinch2 = true;
-  }
+  };
 
   if (!grinch3) {
     enemy3.grinchNum = myNum(5) * 64;
     enemy3.x = myNum(750);
     enemy3.y = myNum(250) + 30;
     grinch3 = true;
-  }
+  };
 
   //отрисовываем первого гринча...
   if (enemy.moving < 0) {
@@ -301,9 +301,9 @@ function render() {
         enemy.diry = -enemy.speed;
       } else {
         enemy.diry = enemy.speed;
-      }
-    }
-  }
+      };
+    };
+  };
 
   enemy.moving--;
   enemy.x = enemy.x + enemy.dirx;

@@ -3,7 +3,6 @@
 btnLinkRec.addEventListener("click", showScore);
 
 
-
 let blockSaveResult = document.createElement("div");
 blockSaveResult.classList.add("blockSaveResult");
 wrap.insertAdjacentElement("beforeend", blockSaveResult);
@@ -11,7 +10,7 @@ wrap.insertAdjacentElement("beforeend", blockSaveResult);
 let inputName = document.createElement("input");
 inputName.classList.add("inputName");
 inputName.setAttribute("placeholder", "enter your name");
-inputName.setAttribute("maxlength", "12");
+inputName.setAttribute("maxlength", "10");
 
 let headerResult = document.createElement("div");
 headerResult.classList.add("headerResult");
