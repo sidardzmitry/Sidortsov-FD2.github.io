@@ -1,2 +1,2 @@
-# Sidortsov-FD2.github.io
-Хостинг для заданий на курсе JS(IT Academy)
+This is the repository where I solve different JS tasks.
+
